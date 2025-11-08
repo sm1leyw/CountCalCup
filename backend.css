@@ -1,0 +1,364 @@
+/* ===================== */
+/* 🔹 Global / Body */
+body {
+  font-family: "Poppins", sans-serif; /* ใช้ฟอนต์ Poppins */
+  margin: 0;                          /* ลบ margin ของ browser */
+  background: #f6fdf8;                /* พื้นหลังสีอ่อน */
+  color: #333;                        /* สีตัวอักษรหลัก */
+}
+
+/* ===================== */
+/* 🔹 Header */
+header {
+  background: #1e1e1e;                /* สีพื้นหลัง header */
+  color: white;                        /* สีตัวอักษร */
+  display: flex;
+  justify-content: space-between;      /* จัดโลโก้ซ้าย nav ขวา */
+  align-items: center;                 /* จัดแนวกลางตามแนวแกน y */
+  padding: 30px 30px;                  /* ระยะห่างด้านบน-ล่าง ซ้าย-ขวา */
+}
+
+header .logo {
+  font-weight: 600;                     /* หนักตัวอักษร */
+  font-size: 20px;                      /* ขนาดตัวอักษร */
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* ระยะห่างระหว่างลิงก์ */
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;               /* ลบเส้นใต้ */
+  background: #00a86b;                 /* สีพื้นหลังปุ่ม */
+  padding: 8px 15px;
+  border-radius: 10px;                 /* มุมโค้ง */
+  transition: none;
+}
+
+header nav a:hover {
+  background: #008b5a;                 /* สีเปลี่ยนเมื่อ hover */
+}
+
+/* ===================== */
+/* 🔹 Main */
+main {
+  padding: 30px;
+  text-align: center;
+}
+
+h1 {
+  color: #00a86b;
+  margin-bottom: 25px;
+}
+
+/* ===================== */
+/* 🔹 กล่องออเดอร์ */
+.order-grid {
+  display: flex;
+  flex-wrap: wrap;                     /* แถวใหม่ถ้าเกิน */
+  justify-content: center;
+  gap: 20px;                           /* ระยะห่างระหว่างกล่อง */
+}
+
+.order-box {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 0px 8px rgba(0,0,0,0.4); /* เงา */
+  width: 280px;
+  padding: 15px;
+  text-align: left;
+  transition: none;
+}
+
+.order-box:hover {
+  transform: none;                     /* ไม่ซูมเวลา hover */
+}
+
+.order-box img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;                   /* ครอบรูปเต็มกล่อง */
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.order-info h3 {
+  margin: 5px 0;
+  color: #00a86b;
+}
+
+.order-info p {
+  font-size: 14px;
+  margin: 0 0 10px;
+}
+
+/* 🔹 Select dropdown */
+.order-info select {
+  appearance: none;                    /* ซ่อนลูกศรมาตรฐาน */
+  background: #ffffff 
+    url('data:image/svg+xml;utf8,<svg fill="%2300a86b" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') 
+      no-repeat right 5px center;     /* ใส่ลูกศรเอง */
+  background-size: 16px;
+
+  width: 100%;
+  padding: 7px;
+  border-radius: 10px;
+  border: 1px solid #00a86b;
+  margin-bottom: 10px;
+}
+
+.order-info select:hover {
+  background-color: #00a86a90;
+  border-color: #00a86b;
+}
+
+.order-info select:focus {
+  background-color: #f0fff8;
+  border-color: #00a86b;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+/* ตัว option ใน dropdown */
+.order-info select option {
+  background-color: #ffffff8e;
+  color: #000000;
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* 🔹 ปุ่มยืนยันสถานะ */
+.submit-btn {
+  background: #00a86b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background: #008f5b;
+}
+
+/* ===================== */
+/* 🔹 ปุ่มโปรไฟล์ */
+.profile-btn {
+  background: #00a86b;
+  border: 2px solid #00a86b;
+  border-radius: 50%;                  /* กลม */
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: none;
+  animation: neonGlow 2s infinite alternate;
+}
+
+.profile-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-btn:hover {
+  background: #008f5f;
+}
+
+/* ===================== */
+/* 🔹 แถบโปรไฟล์ (Slide Panel) */
+.profile-panel {
+  position: fixed;
+  top: 0;
+  right: -100%;                         /* ซ่อนออกไปข้างนอก */
+  width: 350px;
+  height: 100vh;
+  background: white;
+  box-shadow: -2px 0 15px rgba(0,0,0,0.2);
+  transition: right 0.4s ease;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+}
+
+.profile-panel.active {
+  right: 0;                             /* แสดง panel เมื่อ active */
+}
+
+/* 🔹 พื้นหลังมืดเมื่อเปิดโปรไฟล์ */
+.profile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.4s ease;
+  z-index: 998;
+}
+
+.profile-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 🔹 ปุ่มย้อนกลับใน panel */
+.close-btn {
+  align-self: flex-start;
+  background: #00a86b;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  background: #008f5f;
+}
+
+/* 🔹 เนื้อหาภายในโปรไฟล์ */
+.profile-content {
+  text-align: center;
+}
+
+.profile-content .profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 5px;
+  border: 3px solid #00ff80; /* สีเขียวนีออน */
+  box-shadow: 0 0 10px #00ff80, 0 0 20px #00ff80, 0 0 30px #00ff80;
+  animation: neonGlow 2s infinite alternate;
+}
+
+.profile-content h2 {
+  color: #00a86b;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.profile-content p {
+  color: #555;
+  font-size: 14px;
+}
+
+/* ===================== */
+/* 🔹 Popup สถานะกลางจอ */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: 0.3s ease;
+  z-index: 1000;
+}
+
+.popup-overlay.show {
+  opacity: 1;
+}
+
+.popup-box {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 0.3s ease;
+  width: 320px;
+}
+
+.popup-box.show {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* ปุ่ม OK ใน popup */
+.ok-btn {
+  background: #00a86b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.ok-btn:hover {
+  background: #008f5f;
+}
+
+/* 🔹 แอนิเมชันติ๊กถูก */
+.checkmark-container {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid #00a86b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 15px;
+  position: relative;
+  animation: popIn 0.4s ease;           /* animation โผล่มา */
+}
+
+.checkmark {
+  width: 25px;
+  height: 45px;
+  border-right: 5px solid #00a86b;
+  border-bottom: 5px solid #00a86b;
+  transform: rotate(45deg) scale(0);   /* เริ่มจาก scale 0 */
+  transform-origin: center;
+  animation: checkmark 0.6s ease 0.3s forwards;
+}
+
+/* Animation keyframes */
+@keyframes popIn {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes checkmark {
+  to { transform: rotate(45deg) scale(1); }
+}
+
+/* เอฟเฟกต์นีออน */
+@keyframes neonGlow {
+  0% {
+    box-shadow: 0 0 5px #00ff80, 0 0 10px #00ff80, 0 0 20px #00ff80;
+    border-color: #00ff80;
+  }
+  50% {
+    box-shadow: 0 0 15px #00ff80, 0 0 30px #00ff80, 0 0 45px #00ff80;
+    border-color: #00ffaa;
+  }
+  100% {
+    box-shadow: 0 0 5px #00ff80, 0 0 10px #00ff80, 0 0 20px #00ff80;
+    border-color: #00ff80;
+  }
+}

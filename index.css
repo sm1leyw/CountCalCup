@@ -1,0 +1,155 @@
+/* ตั้งค่า body ของหน้าเว็บทั้งหมด */
+body {
+  margin: 0; /* ลบ margin เริ่มต้นของ browser */
+  font-family: "Poppins", sans-serif; /* ฟอนต์หลักของหน้า */
+  background: #ffffff; /* พื้นหลังสีขาว */
+}
+
+/* ซ่อน element ที่ใช้คลาส hidden */
+.hidden {
+  display: none;
+}
+
+/* สไตล์ header */
+header {
+  background: #1e1e1e; /* พื้นหลังสีเข้ม */
+  display: flex; /* ใช้ flexbox จัด layout */
+  justify-content: space-between; /* แยกส่วนซ้าย-ขวา */
+  align-items: center; /* จัดแนวกลางตามแนวตั้ง */
+  padding: 30px 30px; /* ระยะห่างภายใน header */
+}
+
+/* โลโก้ */
+.logo {
+  text-decoration: none; /* ลบเส้นใต้ */
+  font-weight: bold; /* ตัวหนา */
+  font-size: 1.5rem; /* ขนาดตัวอักษร */
+}
+
+/* ลิงก์ในโลโก้ */
+.logo a {
+  text-decoration: none; /* ลบเส้นใต้ */
+  color: #ffffff; /* สีตัวอักษรขาว */
+}
+
+/* เมื่อ hover โลโก้ */
+.logo a:hover {
+  color: #dddddd; /* เปลี่ยนสีอ่อน */
+  transform: scale(2); /* ขยายขนาด */
+}
+
+/* ไอคอนตะกร้า */
+.cart-icon {
+  position: relative; /* ใช้สำหรับวาง badge จำนวนสินค้า */
+  margin-left: 75%; /* เลื่อนขวา */
+  font-size: 1.5rem; /* ขนาดไอคอน */
+  cursor: pointer; /* เปลี่ยน cursor เป็น pointer */
+  color: #ffffff; /* สีไอคอนขาว */
+}
+
+/* จำนวนสินค้าในตะกร้า */
+.cart-count {
+  position: absolute; /* วางซ้อนบนไอคอน */
+  top: -8px; /* เลื่อนขึ้นบน */
+  right: -10px; /* เลื่อนขวา */
+  background: red; /* สีพื้นหลังแดง */
+  color: rgb(255, 255, 255); /* สีตัวอักษรขาว */
+  border-radius: 50%; /* ทำเป็นวงกลม */
+  width: 18px; /* กว้าง */
+  height: 18px; /* สูง */
+  font-size: 0.8rem; /* ขนาดตัวอักษร */
+  text-align: center; /* จัดตัวอักษรกลาง */
+  line-height: 18px; /* จัดให้ตัวเลขอยู่กึ่งกลาง */
+  display: none; /* ซ่อนเริ่มต้น */
+}
+
+/* ส่วน hero/banner */
+.hero {
+  background-image: url('image/organic.jpg'); /* ภาพพื้นหลัง */
+  background-size: cover; /* ขยายให้เต็ม */
+  text-align: center; /* จัดข้อความตรงกลาง */
+  color: rgb(255, 255, 255); /* สีตัวอักษรขาว */
+  padding: 80px 20px; /* ระยะห่างภายใน */
+}
+
+/* Container แสดงร้านอาหาร */
+.menu-container {
+  padding: 40px; /* ระยะห่างรอบ container */
+  display: flex; /* ใช้ flexbox */
+  justify-content: left; /* จัดกึ่งกลางแนวนอน */
+}
+
+/* Grid แสดงร้านอาหาร */
+.menu-grid {
+  display: grid; /* ใช้ grid */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* กำหนดคอลัมน์ responsive */
+  gap: 25px; /* ระยะห่างระหว่างร้าน */
+  max-width: 1000px; /* ความกว้างสูงสุด */
+}
+
+/* แต่ละร้านอาหาร */
+.menu-item {
+  background: white; /* พื้นหลังขาว */
+  padding: 20px; /* ระยะห่างภายใน */
+  text-align: center; /* จัดข้อความตรงกลาง */
+  border-radius: 16px; /* มุมโค้งมน */
+  box-shadow: 0 0px 8px rgba(0,0,0,0.4); /* เงารอบ ๆ */
+}
+
+/* รูปภาพในแต่ละร้าน */
+.menu-item img {
+  width: 80px; /* กว้าง */
+  height: 80px; /* สูง */
+}
+
+/* ปุ่มทั้งหมด */
+button {
+  cursor: pointer; /* เปลี่ยน cursor เป็น pointer */
+  border: none; /* ไม่มีเส้นกรอบ */
+  background: #00a86b; /* พื้นหลังสีเขียว */
+  color: rgb(255, 255, 255); /* ตัวอักษรสีขาว */
+  padding: 8px 15px; /* ระยะห่างภายในปุ่ม */
+  margin-top: 10px; /* เว้นด้านบน */
+  border-radius: 7px; /* มุมปุ่มโค้งมน */
+}
+
+/* ลิงก์ภายในปุ่ม */
+button a {
+  text-decoration: none; /* ลบเส้นใต้ */
+}
+
+/* คลาสปุ่มเข้าใช้งานร้าน */
+.enter-btn {
+  color: white; /* ฟอนต์สีขาว */
+}
+
+/* ปุ่มเมื่อ hover */
+button:hover {
+  background: #008b5a; /* สีเขียวเข้มขึ้น */
+}
+
+/* ปุ่มเข้าสู่ระบบพ่อครัว */
+.staff-btn {
+  background: #00a86b; /* พื้นหลังเขียว */
+  color: #fff; /* ตัวอักษรสีขาว */
+  padding: 8px 14px; /* ระยะห่างภายใน */
+  border-radius: 8px; /* มุมโค้งมน */
+  text-decoration: none; /* ลบเส้น underline */
+  font-size: 0.95rem; /* ขนาดตัวอักษร */
+  transition: 0.3s; /* แอนิเมชันเปลี่ยนสีเรียบ ๆ */
+}
+
+/* hover ปุ่ม staff-btn */
+.staff-btn:hover {
+  background: #008b5a; /* เปลี่ยนสีเขียวเข้มเมื่อ hover */
+}
+
+#searchInput{
+  padding: 12px 50px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 42px;
+  display: flex;
+  justify-content: right;
+}

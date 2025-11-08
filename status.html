@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เช็คสถานะอาหาร</title>
+    <link rel="stylesheet" href="status.css">
+</head>
+<body>
+    <header>
+        <h1>สถานะอาหารของคุณ 🍛</h1>
+    </header>
+
+    <section class="order-status">
+        <div class="food-box">
+            <img src="image/cooking.png"  alt="กระเพราควาย">
+            <div class="food-info">
+                <h2>กระเพราควาย - จานที่ 1</h2>
+                <p>สถานะ: <span class="status preparing">กำลังปรุง</span></p>
+                <p>หมายเลขออเดอร์: <strong>#A1021</strong></p>
+            </div>
+        </div>
+
+        <div class="food-box">
+            <img src="image/cooking.png"  alt="กระเพราควาย">
+            <div class="food-info">
+                <h2>กระเพราควาย - จานที่ 2</h2>
+                <p>สถานะ: <span class="status delivered">จัดส่งแล้ว</span></p>
+                <p>หมายเลขออเดอร์: <strong>#A1022</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <button id="checkStatusBtn" class="status-btn">เช็คสถานะอีกครั้ง 🔄</button>
+    </footer>
+</body>
+</html>

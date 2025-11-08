@@ -1,0 +1,82 @@
+/* ตั้งค่า body ของหน้าเว็บทั้งหมด */
+body {
+  background: #00a86b; /* พื้นหลังสีเขียว */
+  font-family: "Poppins", sans-serif; /* ฟอนต์หลักของหน้า */
+  display: flex; /* ใช้ flexbox จัดตำแหน่งภายใน body */
+  justify-content: center; /* จัด content กึ่งกลางแนวนอน */
+  align-items: center; /* จัด content กึ่งกลางแนวตั้ง */
+  height: 100vh; /* ความสูงเต็มหน้าจอ viewport */
+  margin: 0; /* ลบ margin เริ่มต้นของ browser */
+}
+
+/* กล่อง container ของฟอร์ม login */
+.login-container {
+  background: white; /* พื้นหลังสีขาว */
+  padding: 40px; /* ระยะห่างภายในกล่อง */
+  border-radius: 16px; /* มุมกล่องโค้งมน */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* เงาเบา ๆ รอบกล่อง */
+  width: 320px; /* ความกว้างคงที่ของกล่อง */
+  text-align: center; /* จัดข้อความตรงกลาง */
+}
+
+/* สไตล์โลโก้/ชื่อเว็บไซต์ */
+.logo-text h1 {
+  font-size: 25px; /* ขนาดตัวอักษร */
+  font-weight: 600; /* ความหนาตัวอักษร */
+  color: #000000; /* สีตัวอักษรดำ */
+  letter-spacing: 0px; /* ระยะห่างระหว่างตัวอักษร */
+  margin: 0 0 15px 0; /* กำหนด margin ด้านล่าง 15px */
+}
+
+/* หัวข้อฟอร์ม login */
+h2 {
+  margin-bottom: 25px; /* เว้นระยะด้านล่าง */
+  color: #00a86b; /* สีเขียวเข้ากับธีม */
+}
+
+/* กลุ่มฟิลด์ input */
+.form-group {
+  text-align: left; /* จัด label และ input ซ้าย */
+  margin-bottom: 15px; /* เว้นระยะระหว่างกลุ่ม */
+}
+
+/* สไตล์ label ของ input */
+label {
+  display: block; /* ให้ label อยู่บรรทัดใหม่ */
+  font-weight: bold; /* ตัวหนา */
+  margin-bottom: 5px; /* เว้นระยะด้านล่างก่อน input */
+  color: #333; /* สีเทาเข้ม */
+}
+
+/* สไตล์ input ทั้งหมด */
+input {
+  width: 100%; /* เต็มความกว้าง container */
+  padding: 10px; /* ระยะห่างภายในช่อง input */
+  border: 1px solid #ccc; /* เส้นกรอบสีเทาอ่อน */
+  border-radius: 8px; /* มุมโค้งมน */
+  font-size: 14px; /* ขนาดตัวอักษร */
+}
+
+/* สไตล์เมื่อ focus ที่ input */
+input:focus {
+  border-color: #00a86b; /* เปลี่ยนเส้นกรอบเป็นสีเขียว */
+  outline: none; /* ลบเส้นรอบ default */
+}
+
+/* ปุ่ม login และปุ่มอื่น ๆ */
+button {
+  width: 100%; /* กว้างเต็ม container */
+  background: #00a86b; /* พื้นหลังสีเขียว */
+  color: white; /* ตัวอักษรสีขาว */
+  padding: 10px; /* ระยะห่างภายในปุ่ม */
+  border: none; /* ไม่มีเส้นกรอบ */
+  border-radius: 8px; /* มุมโค้งมน */
+  font-size: 16px; /* ขนาดตัวอักษร */
+  cursor: pointer; /* เปลี่ยน cursor เป็น pointer เมื่อ hover */
+  transition: background 0.3s; /* แอนิเมชันเปลี่ยนสีพื้นหลังแบบนุ่มนวล */
+}
+
+/* ปุ่มเมื่อ hover */
+button:hover {
+  background: #00a86b; /* สีเขียวเหมือนเดิม (สามารถปรับให้เข้มขึ้นได้) */
+}
