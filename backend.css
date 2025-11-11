@@ -158,7 +158,6 @@ h1 {
   cursor: pointer;
   margin-left: 10px;
   transition: none;
-  animation: neonGlow 2s infinite alternate;
 }
 
 .profile-btn img {
@@ -242,9 +241,7 @@ h1 {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 5px;
-  border: 3px solid #00ff80; /* สีเขียวนีออน */
-  box-shadow: 0 0 10px #00ff80, 0 0 20px #00ff80, 0 0 30px #00ff80;
-  animation: neonGlow 2s infinite alternate;
+  border: 3px solid #00a86b;
 }
 
 .profile-content h2 {
@@ -256,6 +253,28 @@ h1 {
 .profile-content p {
   color: #555;
   font-size: 14px;
+}
+
+.logout-btn {
+  background: #00a86b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-size: 15px;
+  transition: 0.3s;
+
+}
+
+.logout-btn:hover {
+  background-color: #ff4d4d;
+}
+
+a {
+  color: white;
+  text-decoration: none;
 }
 
 /* ===================== */
@@ -345,20 +364,4 @@ h1 {
 
 @keyframes checkmark {
   to { transform: rotate(45deg) scale(1); }
-}
-
-/* เอฟเฟกต์นีออน */
-@keyframes neonGlow {
-  0% {
-    box-shadow: 0 0 5px #00ff80, 0 0 10px #00ff80, 0 0 20px #00ff80;
-    border-color: #00ff80;
-  }
-  50% {
-    box-shadow: 0 0 15px #00ff80, 0 0 30px #00ff80, 0 0 45px #00ff80;
-    border-color: #00ffaa;
-  }
-  100% {
-    box-shadow: 0 0 5px #00ff80, 0 0 10px #00ff80, 0 0 20px #00ff80;
-    border-color: #00ff80;
-  }
 }

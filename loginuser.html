@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8"> <!-- กำหนดการเข้ารหัสตัวอักษร UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- ทำให้หน้าเว็บ responsive -->
+  
+  <!-- นำฟอนต์ Montserrat และ Poppins จาก Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <title>เข้าสู่ระบบลูกค้า</title> <!-- ชื่อแท็บของหน้า -->
+  
+  <!-- ลิงก์ไฟล์ CSS ภายนอก -->
+  <link rel="stylesheet" href="loginuser.css">
+</head>
+<body>
+  <!-- Container หลักของหน้า login -->
+  <div class="login-container">
+    
+    <!-- หัวข้อฟอร์มเข้าสู่ระบบ -->
+    <h2>เข้าสู่ระบบลูกค้า</h2>
+
+    <!-- ฟอร์ม login -->
+    <form action="backend.html"> <!-- ส่งข้อมูลไปยัง backend.html เมื่อกด submit -->
+      
+      <!-- กลุ่มฟิลด์ Username -->
+      <div class="form-group">
+        <label for="username">ชื่อผู้ใช้ (Username)</label> <!-- ป้ายชื่อ -->
+        <input type="text" id="username" name="username" placeholder="กรอกชื่อผู้ใช้" required> <!-- input username -->
+      </div>
+
+      <!-- กลุ่มฟิลด์ Password -->
+      <div class="form-group">
+        <label for="password">รหัสผ่าน (Password)</label> <!-- ป้ายชื่อ -->
+        <input type="password" id="password" name="password" placeholder="กรอกรหัสผ่าน" required> <!-- input password -->
+      </div>
+
+      <!-- ปุ่ม submit -->
+      <button type="submit">เข้าสู่ระบบ</button>
+    </form>
+
+    <br>
+
+    <!-- ปุ่มย้อนกลับไปหน้าหลัก -->
+    <button class="back-btn" onclick="window.location.href='index.html'">กลับหน้าหลัก</button>
+
+  </div> <!-- ปิด container login -->
+
+  <!-- ลิงก์ไฟล์ JavaScript ภายนอก -->
+  <script src="loginuser.js"></script>
+</body>
+</html>
