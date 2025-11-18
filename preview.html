@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count Cal Cup - ยินดีต้อนรับ</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="csspreview.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-bowl-food" style="color: var(--primary-green);"></i>
+            Count Cal Cup
+        </div>
+        
+        <div class="hamburger" id="hamburger-btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <div class="nav-menu" id="nav-menu">
+            <a href="#" class="nav-link">หน้าแรก</a>
+            <a href="#zones" class="nav-link">ร้านค้า</a>
+            <a href="#" class="nav-link">บทความสุขภาพ</a>
+            
+            <div class="mobile-auth-buttons"> 
+                <button type="button" class="btn btn-primary"><a href="loginuser.html">เข้าสู่ระบบลูกค้า</a></button>
+                <button type="button" class="btn btn-outline"><a href="login.html"></a>เข้าสู่ระบบพ่อครัว</button>
+            </div>
+        </div>
+
+        <div class="desktop-auth-buttons">
+            <button type="button" class="btn btn-primary" ><a href="loginuser.html">เข้าสู่ระบบลูกค้า</button>
+            <button type="button" class="btn btn-outline"><a href="login.html"></a>เข้าสู่ระบบพ่อครัว</button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>สุขภาพดี...เริ่มที่การกิน</h1>
+            <p>เลือกร้านอาหารในโรงอาหาร พร้อมคำนวณแคลอรี่แบบ Real-time<br>ให้ทุกมื้อของคุณ อร่อยและสุขภาพดีไปพร้อมกัน</p>
+            <a href="#zones" class="btn btn-primary hero-btn">สั่งอาหารเลย <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="feature-item">
+            <i class="fa-solid fa-calculator"></i>
+            <h3>คำนวณแคลอรี่แม่นยำ</h3>
+            <p>รู้ยอดพลังงานก่อนทาน ด้วยระบบคำนวณอัตโนมัติ</p>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-store"></i>
+            <h3>รวมร้านดังครบทุกชั้น</h3>
+            <p>ไม่ต้องเดินหา เรารวบรวมเมนูจากทุกร้านไว้ที่นี่</p>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-heart-pulse"></i>
+            <h3>เมนูทางเลือกเพื่อสุขภาพ</h3>
+            <p>คัดสรรเมนู Clean Food สำหรับสายรักสุขภาพ</p>
+        </div>
+    </section>
+
+    <section class="zones" id="zones">
+        <h2 class="section-title">เลือกโซน <span>โรงอาหาร</span></h2>
+        
+        <div class="zone-grid">
+            <div class="zone-card">
+                <div class="zone-img" style="background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="zone-info">
+                    <h3>Shop Floor 1</h3>
+                    <p>ศูนย์อาหารหลัก ร้านข้าวแกงและอาหารตามสั่ง</p>
+                    <a href="#" class="view-btn">ดูร้านค้า <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </div>
+
+            <div class="zone-card">
+                <div class="zone-img" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="zone-info">
+                    <h3>Shop Floor 2</h3>
+                    <p>โซนก๋วยเตี๋ยวและ Street Food ยอดนิยม</p>
+                    <a href="#" class="view-btn">ดูร้านค้า <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </div>
+
+            <div class="zone-card">
+                <div class="zone-img" style="background-image: url('https://images.unsplash.com/photo-1509721434272-b79147e0e708?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="zone-info">
+                    <h3>Shop Floor 3</h3>
+                    <p>โซนของหวาน เครื่องดื่ม และเบเกอรี่</p>
+                    <a href="#" class="view-btn">ดูร้านค้า <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Count Cal Cup. All rights reserved.</p>
+    </footer>
+
+    <script src="preview.js"></script>
+</body>
+</html>
