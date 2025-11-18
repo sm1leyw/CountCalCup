@@ -6,7 +6,6 @@
   
   <!-- นำฟอนต์ Montserrat และ Poppins จาก Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  
   <title>Count Cal Cup | ร้านอาหาร</title> <!-- ชื่อแท็บของหน้า -->
   
   <!-- ลิงก์ไฟล์ CSS ภายนอก -->
@@ -18,38 +17,34 @@
   <header>
     <!-- โลโก้เว็บไซต์ -->
     <div class="logo"> 
-      <a href="index.html"><span>Count Cal Cup</span></a> <!-- ลิงก์กลับหน้าแรก -->
-    </div>
-
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="ค้นหาร้านอาหาร..."  onkeyup="searchRestaurant()"> <!-- ช่องค้นหาร้านอาหาร -->
+      <a href="index.html"><span> <img src="image/ccxx.png" alt=""> </span></a> <!-- ลิงก์กลับหน้าแรก -->
     </div>
 
     <!-- ส่วนด้านขวาของ header -->
     <div class="header-right">
       <div> 
         <!-- ปุ่มเข้าสู่ระบบพ่อครัว -->
-        <a href="login.html" id="staffLogin" class="staff-btn">เข้าสู่ระบบพ่อครัว</a>
+        <a href="loginuser.html" id="staffLogin" class="staff-btn">เข้าสู่ระบบลูกค้า</a>
+        <a href="loginbackend.html" id="staffLogin" class="staff-btn">เข้าสู่ระบบพ่อครัว</a>
       </div>
     </div>
   </header>
 
   <!-- ส่วน hero/banner -->
   <section class="hero">
-    <h1>เลือกร้านอาหารของคุณ</h1> <!-- หัวข้อใหญ่ -->
-    <p>กดเลือกร้านเพื่อดูเมนูและสั่งอาหาร</p> <!-- คำอธิบายสั้น -->
-  </section>
-
-  <section class="Floor">
-    <hr>
-    <center><h2>First Floor</h2></center>
-    <hr>
+    <video autoplay muted loop class="hero-video">
+      <source src="video/insert3.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+      <h1>เลือกร้านอาหารของคุณ</h1> <!-- หัวข้อใหญ่ -->
+      <p>กดเลือกร้านเพื่อดูเมนูและสั่งอาหาร</p> <!-- คำอธิบายสั้น -->
+    </div>
   </section>
 
   <!-- ส่วน main แสดงร้านอาหาร -->
   <main class="menu-container">
+    <h3 class="food-floor-title">SHOP FLOOR 1</h3>
     <div class="menu-grid" id="restaurantList"> <!-- Grid แสดงร้านต่าง ๆ -->
-      
       <!-- ร้านอาหาร 1 -->
       <div class="menu-item restaurant" data-restaurant="ร้านฟิตฟู้ด">
         <img src="image/iftar.png"> <!-- รูปภาพร้าน -->
@@ -60,65 +55,87 @@
         </button>
       </div>
 
-      <!-- ร้านอาหาร 2 -->
-      <div class="menu-item restaurant" data-restaurant="ร้านแคลน้อยดีต่อใจ">
-        <img src="image/calorie.png"> <!-- รูปภาพร้าน -->
-        <h3>ร้านแคลน้อยดีต่อใจ</h3> <!-- ชื่อร้าน -->
-        <p>อาหารคลีนคัดพิเศษ คำนวณโภชนาการทุกจาน</p> <!-- คำอธิบายร้าน -->
-        <button> 
-          <a href="shopF1.html" class="enter-btn">เข้าร้าน</a> <!-- ลิงก์เข้าเมนูร้าน -->
-        </button>
-      </div>
-
-    </div> <!-- ปิด grid ร้านอาหาร -->
-  </main>
-
-  <section class="Floor">
-    <hr>
-    <center><h2>Second Floor</h2></center>
-    <hr>
-  </section>
-
-  <!-- ส่วน main แสดงร้านอาหารชั้น2 -->
-  <main class="menu-container">
-    <div class="menu-grid" id="restaurantList"> <!-- Grid แสดงร้านต่าง ๆ -->
-      
-      <!-- ร้านอาหาร 1 -->
       <div class="menu-item restaurant" data-restaurant="ร้านฟิตฟู้ด">
         <img src="image/iftar.png"> <!-- รูปภาพร้าน -->
-        <h3>SHOP FLOOR 2 <br>ร้านโครตเก</h3> <!-- ชื่อร้าน + floor -->
+        <h3>SHOP FLOOR 1 <br>ร้านโครตกะเพรา</h3> <!-- ชื่อร้าน + floor -->
         <p>เมนูสุขภาพสำหรับสายฟิต</p> <!-- คำอธิบายร้าน -->
         <button> 
           <a href="shopF1.html" class="enter-btn">เข้าร้าน</a> <!-- ลิงก์เข้าเมนูร้าน -->
         </button>
       </div>
 
-    </div> <!-- ปิด grid ร้านอาหาร -->
-  </main>
-
-  <section class="Floor">
-    <hr>
-    <center><h2>Third Floor</h2></center>
-    <hr>
-  </section>
-
-  <!-- ส่วน main แสดงร้านอาหารชั้น2 -->
-  <main class="menu-container">
-    <div class="menu-grid" id="restaurantList"> <!-- Grid แสดงร้านต่าง ๆ -->
-      
-      <!-- ร้านอาหาร 1 -->
       <div class="menu-item restaurant" data-restaurant="ร้านฟิตฟู้ด">
         <img src="image/iftar.png"> <!-- รูปภาพร้าน -->
-        <h3>SHOP FLOOR 3 <br>ร้านโครตจะเก</h3> <!-- ชื่อร้าน + floor -->
+        <h3>SHOP FLOOR 1 <br>ร้านโครตกะเพรา</h3> <!-- ชื่อร้าน + floor -->
         <p>เมนูสุขภาพสำหรับสายฟิต</p> <!-- คำอธิบายร้าน -->
         <button> 
           <a href="shopF1.html" class="enter-btn">เข้าร้าน</a> <!-- ลิงก์เข้าเมนูร้าน -->
         </button>
       </div>
-
     </div> <!-- ปิด grid ร้านอาหาร -->
+
+    <h3 class="food-floor-title">SHOP FLOOR 2</h3>
+    <div class="menu-grid" id="restaurantList"> <!-- Grid แสดงร้านต่าง ๆ -->
+      <!-- ร้านอาหาร 1 -->
+      <div class="menu-item restaurant" data-restaurant="ร้านฟิตฟู้ด">
+        <img src="image/iftar.png"> <!-- รูปภาพร้าน -->
+        <h3>SHOP FLOOR 2 <br>ร้านโครตกะเพรา</h3> <!-- ชื่อร้าน + floor -->
+        <p>เมนูสุขภาพสำหรับสายฟิต</p> <!-- คำอธิบายร้าน -->
+        <button> 
+          <a href="shopF2.html" class="enter-btn">เข้าร้าน</a> <!-- ลิงก์เข้าเมนูร้าน -->
+        </button>
+      </div>
+
+      <div class="menu-item restaurant" data-restaurant="ร้านฟิตฟู้ด">
+        <img src="image/iftar.png"> <!-- รูปภาพร้าน -->
+        <h3>SHOP FLOOR 2 <br>ร้านโครตกะเพรา</h3> <!-- ชื่อร้าน + floor -->
+        <p>เมนูสุขภาพสำหรับสายฟิต</p> <!-- คำอธิบายร้าน -->
+        <button> 
+          <a href="shopF2.html" class="enter-btn">เข้าร้าน</a> <!-- ลิงก์เข้าเมนูร้าน -->
+        </button>
+      </div>
+
+      <div class="menu-item restaurant" data-restaurant="ร้านฟิตฟู้ด">
+        <img src="image/iftar.png"> <!-- รูปภาพร้าน -->
+        <h3>SHOP FLOOR 2 <br>ร้านโครตกะเพรา</h3> <!-- ชื่อร้าน + floor -->
+        <p>เมนูสุขภาพสำหรับสายฟิต</p> <!-- คำอธิบายร้าน -->
+        <button> 
+          <a href="shopF2.html" class="enter-btn">เข้าร้าน</a> <!-- ลิงก์เข้าเมนูร้าน -->
+        </button>
+      </div>
+    </div>
+
+    <h3 class="food-floor-title">SHOP FLOOR 3</h3>
+    <div class="menu-grid" id="restaurantList"> <!-- Grid แสดงร้านต่าง ๆ -->
+      <!-- ร้านอาหาร 1 -->
+      <div class="menu-item restaurant" data-restaurant="ร้านฟิตฟู้ด">
+        <img src="image/iftar.png"> <!-- รูปภาพร้าน -->
+        <h3>SHOP FLOOR 3 <br>ร้านโครตกะเพรา</h3> <!-- ชื่อร้าน + floor -->
+        <p>เมนูสุขภาพสำหรับสายฟิต</p> <!-- คำอธิบายร้าน -->
+        <button> 
+          <a href="shopF3.html" class="enter-btn">เข้าร้าน</a> <!-- ลิงก์เข้าเมนูร้าน -->
+        </button>
+      </div>
+
+      <div class="menu-item restaurant" data-restaurant="ร้านฟิตฟู้ด">
+        <img src="image/iftar.png"> <!-- รูปภาพร้าน -->
+        <h3>SHOP FLOOR 3 <br>ร้านโครตกะเพรา</h3> <!-- ชื่อร้าน + floor -->
+        <p>เมนูสุขภาพสำหรับสายฟิต</p> <!-- คำอธิบายร้าน -->
+        <button> 
+          <a href="shopF3.html" class="enter-btn">เข้าร้าน</a> <!-- ลิงก์เข้าเมนูร้าน -->
+        </button>
+      </div>
+
+      <div class="menu-item restaurant" data-restaurant="ร้านฟิตฟู้ด">
+        <img src="image/iftar.png"> <!-- รูปภาพร้าน -->
+        <h3>SHOP FLOOR 3 <br>ร้านโครตกะเพรา</h3> <!-- ชื่อร้าน + floor -->
+        <p>เมนูสุขภาพสำหรับสายฟิต</p> <!-- คำอธิบายร้าน -->
+        <button> 
+          <a href="shopF3.html" class="enter-btn">เข้าร้าน</a> <!-- ลิงก์เข้าเมนูร้าน -->
+        </button>
+      </div>
+    </div>
   </main>
-  
 
   <!-- เสียง ding เมื่อเลือกหรือเพิ่มสินค้าต่าง ๆ -->
   <audio id="dingSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7e5c30a4a3.mp3?filename=interface-124464.mp3" preload="auto"></audio>

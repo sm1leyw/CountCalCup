@@ -2,7 +2,7 @@
 body {
   margin: 0; /* ลบ margin เริ่มต้นของ browser */
   font-family: "Poppins", sans-serif; /* ฟอนต์หลักของหน้า */
-  background: #ffffff; /* พื้นหลังสีขาว */
+  background: #eeeeee; /* พื้นหลังสีขาว */
 }
 
 /* ซ่อน element ที่ใช้คลาส hidden */
@@ -24,6 +24,12 @@ header {
   text-decoration: none; /* ลบเส้นใต้ */
   font-weight: bold; /* ตัวหนา */
   font-size: 1.5rem; /* ขนาดตัวอักษร */
+}
+
+.logo img {
+  width: 70px;  /* ปรับขนาดโลโก้ตามต้องการ */
+  height: auto;
+  display: block;
 }
 
 /* ลิงก์ในโลโก้ */
@@ -65,18 +71,55 @@ header {
 
 /* ส่วน hero/banner */
 .hero {
-  background-image: url('image/organic.jpg'); /* ภาพพื้นหลัง */
-  background-size: cover; /* ขยายให้เต็ม */
-  text-align: center; /* จัดข้อความตรงกลาง */
-  color: rgb(255, 255, 255); /* สีตัวอักษรขาว */
-  padding: 80px 20px; /* ระยะห่างภายใน */
+  position: relative; /* กำหนดให้ div นี้เป็น reference สำหรับ position ของลูกข้างใน */
+  width: 100%;        /* กว้างเต็มความกว้างหน้าจอ */
+  height: 50vh;       /* ความสูง = 50% ของ viewport height */
+  display: flex;      /* ใช้ flexbox จัด layout ข้างใน */
+  justify-content: center; /* จัดแนวนอนให้อยู่กลาง */
+  align-items: center;     /* จัดแนวตั้งให้อยู่กลาง */
+  text-align: center;       /* ข้อความกึ่งกลาง */
+  color: #ffffff;          /* ตัวอักษรสีขาว */
+  overflow: hidden;        /* ซ่อนส่วนเกินของลูก div / video */
+  background-color: #000;  /* เผื่อวิดีโอโหลดไม่ทัน จะได้มีพื้นหลังสีดำ */
+}
+
+.hero-video {
+  position: absolute; /* วิดีโออยู่เหนือ/ใต้ตาม z-index แต่ไม่ย้ายโฟลว์ของ layout */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;       /* ครอบเต็ม .hero */
+  object-fit: cover;  /* ย่อ/ขยายวิดีโอให้เต็มพื้นที่โดยไม่เสียสัดส่วน */
+  z-index: 0;         /* วางอยู่ด้านหลัง .hero-content */
+  filter: brightness(60%); /* ลดความสว่างของวิดีโอ เพื่อให้ข้อความเด่นชัด */
+}
+
+.hero-content {
+  position: relative; /* ต้อง relative เพื่อใช้ z-index */
+  z-index: 1;         /* อยู่เหนือวิดีโอ */
+  text-shadow: 0px 0px 7px rgb(0, 0, 0); /* ทำให้ข้อความชัดขึ้น */
+}
+
+.hero-content h1 {
+  font-size: 2.8rem; /* ขนาดใหญ่พอให้เด่น */
+  font-weight: 700;  /* หนัก/ชัด */
+  margin-bottom: 10px; /* เว้นระยะจาก p ด้านล่าง */
+}
+
+.hero-content p {
+  font-size: 1.1rem; /* ขนาดตัวอักษรปกติ */
+  opacity: 0.9;      /* ทำให้ตัวอักษรซีดเล็กน้อย แต่ยังมองเห็นชัด */
 }
 
 /* Container แสดงร้านอาหาร */
 .menu-container {
-  padding: 40px; /* ระยะห่างรอบ container */
-  display: flex; /* ใช้ flexbox */
-  justify-content: left; /* จัดกึ่งกลางแนวนอน */
+  padding: 40px;
+  display: flex;
+  flex-direction: column;   /* ✅ เรียงหัวข้อกับ grid เป็นแนวตั้ง */
+  align-items: center;      /* ✅ จัดกึ่งกลางแนวนอน */
+  text-align: center;       /* ✅ จัดข้อความกลางใน container */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Grid แสดงร้านอาหาร */
@@ -85,6 +128,7 @@ header {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* กำหนดคอลัมน์ responsive */
   gap: 25px; /* ระยะห่างระหว่างร้าน */
   max-width: 1000px; /* ความกว้างสูงสุด */
+  justify-items: center;
 }
 
 /* แต่ละร้านอาหาร */
@@ -100,6 +144,28 @@ header {
 .menu-item img {
   width: 80px; /* กว้าง */
   height: 80px; /* สูง */
+}
+
+/* หัวข้อชั้นโรงอาหาร */
+.food-floor-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+/* เส้นตกแต่งใต้หัวข้อ */
+.food-floor-title::after {
+  content: "";
+  display: block;
+  width: 160px;
+  height: 5px;
+  background: #00a86b;
+  margin: 10px auto 0;
+  border-radius: 2px;
 }
 
 /* ปุ่มทั้งหมด */
@@ -142,14 +208,4 @@ button:hover {
 /* hover ปุ่ม staff-btn */
 .staff-btn:hover {
   background: #008b5a; /* เปลี่ยนสีเขียวเข้มเมื่อ hover */
-}
-
-#searchInput{
-  padding: 12px 50px;
-  margin: 10px 0;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 42px;
-  display: flex;
-  justify-content: right;
 }
