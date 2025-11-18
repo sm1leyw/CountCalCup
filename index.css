@@ -1,152 +1,156 @@
-/* ตั้งค่า body ของหน้าเว็บทั้งหมด */
+/* ===== พื้นฐานของหน้า ===== */
 body {
-  margin: 0; /* ลบ margin เริ่มต้นของ browser */
-  font-family: "Poppins", sans-serif; /* ฟอนต์หลักของหน้า */
-  background: #eeeeee; /* พื้นหลังสีขาว */
+  margin: 0; /* ลบค่า margin เริ่มต้นของ browser */
+  font-family: "Poppins", sans-serif; /* ใช้ฟอนต์ Poppins */
+  background: #eeeeee; /* พื้นหลังสีเทาอ่อน */
 }
 
-/* ซ่อน element ที่ใช้คลาส hidden */
+/* ซ่อน element ที่ต้องการซ่อน */
 .hidden {
   display: none;
 }
 
-/* สไตล์ header */
+/* ===== Header ===== */
 header {
   background: #1e1e1e; /* พื้นหลังสีเข้ม */
-  display: flex; /* ใช้ flexbox จัด layout */
-  justify-content: space-between; /* แยกส่วนซ้าย-ขวา */
-  align-items: center; /* จัดแนวกลางตามแนวตั้ง */
-  padding: 30px 30px; /* ระยะห่างภายใน header */
+  display: flex; /* จัดเรียง logo และปุ่มด้านขวาเป็นแนวนอน */
+  justify-content: space-between; /* เว้นระยะห่างระหว่างสองฝั่ง */
+  align-items: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+  padding: 30px 30px; /* ระยะขอบภายใน header */
 }
 
 /* โลโก้ */
 .logo {
-  text-decoration: none; /* ลบเส้นใต้ */
-  font-weight: bold; /* ตัวหนา */
-  font-size: 1.5rem; /* ขนาดตัวอักษร */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
+/* ขนาดและการจัดวางรูปภาพโลโก้ */
 .logo img {
-  width: 70px;  /* ปรับขนาดโลโก้ตามต้องการ */
+  width: 70px;
   height: auto;
   display: block;
 }
 
 /* ลิงก์ในโลโก้ */
 .logo a {
-  text-decoration: none; /* ลบเส้นใต้ */
-  color: #ffffff; /* สีตัวอักษรขาว */
+  text-decoration: none;
+  color: #ffffff; /* สีข้อความขาว */
 }
 
-/* เมื่อ hover โลโก้ */
 .logo a:hover {
-  color: #dddddd; /* เปลี่ยนสีอ่อน */
-  transform: scale(2); /* ขยายขนาด */
+  color: #dddddd; /* เปลี่ยนสีเมื่อ hover */
+  transform: scale(2); /* ขยายโลโก้เมื่อ hover */
 }
 
-/* ไอคอนตะกร้า */
+/* ===== ไอคอนตะกร้าสินค้า ===== */
 .cart-icon {
-  position: relative; /* ใช้สำหรับวาง badge จำนวนสินค้า */
-  margin-left: 75%; /* เลื่อนขวา */
-  font-size: 1.5rem; /* ขนาดไอคอน */
-  cursor: pointer; /* เปลี่ยน cursor เป็น pointer */
-  color: #ffffff; /* สีไอคอนขาว */
+  position: relative;
+  margin-left: 75%; /* เว้นระยะจากซ้าย */
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #ffffff;
 }
 
 /* จำนวนสินค้าในตะกร้า */
 .cart-count {
-  position: absolute; /* วางซ้อนบนไอคอน */
-  top: -8px; /* เลื่อนขึ้นบน */
-  right: -10px; /* เลื่อนขวา */
-  background: red; /* สีพื้นหลังแดง */
-  color: rgb(255, 255, 255); /* สีตัวอักษรขาว */
-  border-radius: 50%; /* ทำเป็นวงกลม */
-  width: 18px; /* กว้าง */
-  height: 18px; /* สูง */
-  font-size: 0.8rem; /* ขนาดตัวอักษร */
-  text-align: center; /* จัดตัวอักษรกลาง */
-  line-height: 18px; /* จัดให้ตัวเลขอยู่กึ่งกลาง */
-  display: none; /* ซ่อนเริ่มต้น */
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: red;
+  color: rgb(255, 255, 255);
+  border-radius: 50%; /* ทำให้เป็นวงกลม */
+  width: 18px;
+  height: 18px;
+  font-size: 0.8rem;
+  text-align: center;
+  line-height: 18px; /* จัดข้อความให้อยู่กลางวงกลม */
+  display: none; /* เริ่มต้นไม่แสดง */
 }
 
-/* ส่วน hero/banner */
+/* ===== Hero Section ===== */
 .hero {
-  position: relative; /* กำหนดให้ div นี้เป็น reference สำหรับ position ของลูกข้างใน */
-  width: 100%;        /* กว้างเต็มความกว้างหน้าจอ */
-  height: 50vh;       /* ความสูง = 50% ของ viewport height */
-  display: flex;      /* ใช้ flexbox จัด layout ข้างใน */
-  justify-content: center; /* จัดแนวนอนให้อยู่กลาง */
-  align-items: center;     /* จัดแนวตั้งให้อยู่กลาง */
-  text-align: center;       /* ข้อความกึ่งกลาง */
-  color: #ffffff;          /* ตัวอักษรสีขาว */
-  overflow: hidden;        /* ซ่อนส่วนเกินของลูก div / video */
-  background-color: #000;  /* เผื่อวิดีโอโหลดไม่ทัน จะได้มีพื้นหลังสีดำ */
+  position: relative;
+  width: 100%;
+  height: 50vh; /* ความสูงครึ่งจอ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  overflow: hidden;
+  background-color: #000; /* สีพื้นหลังสำรอง */
 }
 
+/* วิดีโอพื้นหลัง */
 .hero-video {
-  position: absolute; /* วิดีโออยู่เหนือ/ใต้ตาม z-index แต่ไม่ย้ายโฟลว์ของ layout */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;       /* ครอบเต็ม .hero */
-  object-fit: cover;  /* ย่อ/ขยายวิดีโอให้เต็มพื้นที่โดยไม่เสียสัดส่วน */
-  z-index: 0;         /* วางอยู่ด้านหลัง .hero-content */
-  filter: brightness(60%); /* ลดความสว่างของวิดีโอ เพื่อให้ข้อความเด่นชัด */
+  height: 100%; 
+  object-fit: cover; /* ครอบคลุมพื้นที่โดยไม่บิดรูป */
+  z-index: 0;
+  filter: brightness(60%); /* ลดความสว่างเพื่อให้ข้อความมองเห็นง่าย */
 }
 
+/* เนื้อหาใน hero */
 .hero-content {
-  position: relative; /* ต้อง relative เพื่อใช้ z-index */
-  z-index: 1;         /* อยู่เหนือวิดีโอ */
-  text-shadow: 0px 0px 7px rgb(0, 0, 0); /* ทำให้ข้อความชัดขึ้น */
+  position: relative;
+  z-index: 1; /* อยู่ด้านหน้าวิดีโอ */
+  text-shadow: 0px 0px 7px rgb(0, 0, 0); /* เพิ่มเงาให้ข้อความอ่านง่าย */
 }
 
 .hero-content h1 {
-  font-size: 2.8rem; /* ขนาดใหญ่พอให้เด่น */
-  font-weight: 700;  /* หนัก/ชัด */
-  margin-bottom: 10px; /* เว้นระยะจาก p ด้านล่าง */
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
 .hero-content p {
-  font-size: 1.1rem; /* ขนาดตัวอักษรปกติ */
-  opacity: 0.9;      /* ทำให้ตัวอักษรซีดเล็กน้อย แต่ยังมองเห็นชัด */
+  font-size: 1.1rem;
+  opacity: 0.9; /* ลดความเข้มของข้อความรอง */
 }
 
-/* Container แสดงร้านอาหาร */
+/* ===== Menu Section ===== */
 .menu-container {
   padding: 40px;
   display: flex;
-  flex-direction: column;   /* ✅ เรียงหัวข้อกับ grid เป็นแนวตั้ง */
-  align-items: center;      /* ✅ จัดกึ่งกลางแนวนอน */
-  text-align: center;       /* ✅ จัดข้อความกลางใน container */
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Grid แสดงร้านอาหาร */
+/* กริดร้านอาหาร */
 .menu-grid {
-  display: grid; /* ใช้ grid */
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* กำหนดคอลัมน์ responsive */
-  gap: 25px; /* ระยะห่างระหว่างร้าน */
-  max-width: 1000px; /* ความกว้างสูงสุด */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px; /* เว้นระยะระหว่าง item */
+  max-width: 1000px;
   justify-items: center;
 }
 
-/* แต่ละร้านอาหาร */
+/* การ์ดร้านอาหาร */
 .menu-item {
-  background: white; /* พื้นหลังขาว */
-  padding: 20px; /* ระยะห่างภายใน */
-  text-align: center; /* จัดข้อความตรงกลาง */
-  border-radius: 16px; /* มุมโค้งมน */
-  box-shadow: 0 0px 8px rgba(0,0,0,0.4); /* เงารอบ ๆ */
+  width: 200px;
+  background: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 16px; /* มุมโค้ง */
+  box-shadow: 0 0px 8px rgba(0,0,0,0.4); /* เงาเล็กน้อย */
 }
 
-/* รูปภาพในแต่ละร้าน */
 .menu-item img {
-  width: 80px; /* กว้าง */
-  height: 80px; /* สูง */
+  width: 150px;
+  height: 100px;
+  border-radius: 10px;
+  border: solid 4px #00a86b;
 }
 
-/* หัวข้อชั้นโรงอาหาร */
+/* ชื่อชั้นอาหาร */
 .food-floor-title {
   font-size: 28px;
   font-weight: 700;
@@ -157,55 +161,167 @@ header {
   position: relative;
 }
 
-/* เส้นตกแต่งใต้หัวข้อ */
+/* เส้นใต้ชื่อชั้น */
 .food-floor-title::after {
   content: "";
   display: block;
   width: 160px;
   height: 5px;
-  background: #00a86b;
+  background: #00a86b; /* สีเขียว */
   margin: 10px auto 0;
   border-radius: 2px;
 }
 
-/* ปุ่มทั้งหมด */
+/* ===== ปุ่ม ===== */
 button {
-  cursor: pointer; /* เปลี่ยน cursor เป็น pointer */
-  border: none; /* ไม่มีเส้นกรอบ */
-  background: #00a86b; /* พื้นหลังสีเขียว */
-  color: rgb(255, 255, 255); /* ตัวอักษรสีขาว */
-  padding: 8px 15px; /* ระยะห่างภายในปุ่ม */
-  margin-top: 10px; /* เว้นด้านบน */
-  border-radius: 7px; /* มุมปุ่มโค้งมน */
+  cursor: pointer;
+  border: none;
+  background: #00a86b;
+  color: rgb(255, 255, 255);
+  padding: 8px 15px;
+  margin-top: 10px;
+  border-radius: 7px;
 }
 
-/* ลิงก์ภายในปุ่ม */
 button a {
-  text-decoration: none; /* ลบเส้นใต้ */
+  text-decoration: none; /* ลิงก์ในปุ่มไม่มีเส้นขีด */
 }
 
-/* คลาสปุ่มเข้าใช้งานร้าน */
 .enter-btn {
-  color: white; /* ฟอนต์สีขาว */
+  color: white;
 }
 
-/* ปุ่มเมื่อ hover */
 button:hover {
-  background: #008b5a; /* สีเขียวเข้มขึ้น */
+  background: #008b5a; /* เปลี่ยนสีเมื่อ hover */
 }
 
-/* ปุ่มเข้าสู่ระบบพ่อครัว */
+/* ปุ่มเข้าสู่ระบบ */
 .staff-btn {
-  background: #00a86b; /* พื้นหลังเขียว */
-  color: #fff; /* ตัวอักษรสีขาว */
-  padding: 8px 14px; /* ระยะห่างภายใน */
-  border-radius: 8px; /* มุมโค้งมน */
-  text-decoration: none; /* ลบเส้น underline */
-  font-size: 0.95rem; /* ขนาดตัวอักษร */
-  transition: 0.3s; /* แอนิเมชันเปลี่ยนสีเรียบ ๆ */
+  background: #00a86b;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: 0.3s;
 }
 
-/* hover ปุ่ม staff-btn */
 .staff-btn:hover {
-  background: #008b5a; /* เปลี่ยนสีเขียวเข้มเมื่อ hover */
+  background: #008b5a;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  background-color: #1e1e1e;
+  color: #fff;
+  padding: 40px 20px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* จัด layout ภายใน footer */
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ส่วนต่างๆใน footer */
+.footer-about,
+.footer-links,
+.footer-contact {
+  flex: 1 1 250px; /* ขยายตามขนาดหน้าจอ */
+}
+
+/* โลโก้ใน footer */
+.footer-logo-img {
+  width: 150px;
+  margin-bottom: 15px;
+}
+
+/* หัวข้อใน footer */
+.footer-links h3,
+.footer-contact h3 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+/* รายการลิงก์ */
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #00a86b;
+}
+
+/* ข้อมูลติดต่อ */
+.footer-contact p {
+  margin: 5px 0;
+}
+
+.footer-links h3,
+.footer-contact h3 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.footer-links h3::after,
+.footer-contact h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;       /* ความหนาเส้น */
+  background: #00a86b;  /* สีเส้นใต้ เปลี่ยนได้ */
+  border-radius: 5px;
+}
+
+/* ไอคอนโซเชียล */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.social-icons a img {
+  width: 24px;
+  transition: transform 0.3s;
+  filter: grayscale(100%) brightness(0) invert(100%); /* ปรับสีพื้นฐาน */
+}
+
+.social-icons a:hover img {
+  transform: scale(1.2); /* ขยายไอคอนเมื่อ hover */
+}
+
+/* ส่วนล่างสุด footer */
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  border-top: 2px solid #00a86b;
+  padding-top: 15px;
+  font-size: 14px;
+  color: #aaa;
 }

@@ -3,104 +3,127 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- นำเข้าฟอนต์ Montserrat และ Poppins จาก Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  <title>ร้านที่3</title>
-  <!-- เชื่อมต่อไฟล์ CSS สำหรับหน้า shopF1 -->
+  <title>ร้านที่ 3</title>
   <link rel="stylesheet" href="shopF3.css">
 </head>
 <body>
 
-  <!-- ส่วน Header ของเว็บ -->
-  <header>
-      <!-- โลโก้ของร้าน กดแล้วกลับไปหน้า index.html -->
-      <div class="logo"> <a href="index.html"><span>Count Cal Cup</span></a> </div>
-
-    <div class="header-right">
-      <!-- ปุ่มเข้าสู่ระบบสำหรับพ่อครัว -->
-      <div>
-        <a href="loginuser.html" id="staffLogin" class="staff-btn">เข้าสู่ระบบลูกค้า</a>
-        <a href="loginbackend.html" id="staffLogin" class="staff-btn">เข้าสู่ระบบพ่อครัว</a> 
-      </div>
-
-      <br>
-      <!-- ไอคอนตะกร้าสินค้า พร้อมแสดงจำนวนสินค้า -->
-      <div class="cart-icon" id="cartIcon"> 🛒<span id="cartCount" class="cart-count">0</span> </div>
-    </div>
-  </header>
-
-  <!-- ส่วน Hero แสดงชื่อร้าน/ชั้น -->
-  <section class="hero">
-    <video autoplay muted loop class="hero-video">
-      <source src="video/res1.mp4" type="video/mp4">
-    </video>
-    <div class="hero-content">
-      <h1>SHOP FLOOR 3</h1>
-      <p>กดเลือกเมนูและสั่งอาหาร</p>
-    </div>
-  </section>
-
-  <!-- ส่วน Main แสดงเมนูอาหาร -->
-  <main class="menu-container">
-    <div class="menu-grid" id="restaurantList">
-      <!-- เมนูอาหารแต่ละรายการ -->
-      <div class="menu-item restaurant" data-restaurant="ร้านฟิตฟู้ด">
-        <img src="image/cooking.png"> <!-- รูปอาหาร -->
-        <h3>กะเพราหมา</h3> <!-- ชื่อเมนู -->
-        <p>แคล 420 | โปรตีน 38g | คาร์บ 35g</p> <!-- ข้อมูลโภชนาการ -->
-        <p>40 บาท</p> <!-- ราคา -->
-        <button class="enter-btn">เพิ่มในตะกร้า</button> <!-- ปุ่มเพิ่มลงตะกร้า -->
-      </div>
-
-      <div class="menu-item restaurant" data-restaurant="ร้านแคลน้อยดีต่อใจ">
-        <img src="image/cooking.png">
-        <h3>กะเพราควาย</h3>
-        <p>แคล 420 | โปรตีน 38g | คาร์บ 35g</p>
-        <p>40 บาท</p>
-        <button class="enter-btn">เพิ่มในตะกร้า</button>
-      </div>
-    </div>
-  </main>
-
-  <!-- Sidebar แสดงตะกร้าสินค้า -->
-  <aside id="cartSidebar" class="cart-sidebar">
-    <div class="cart-header">
-      <!-- ปุ่มย้อนกลับจากตะกร้า -->
-      <button id="backBtn" class="back-btn">⬅ ย้อนกลับ</button>
-      <h2>ตะกร้าสินค้า</h2>
-    </div>
-
-    <!-- รายการสินค้าที่ถูกเพิ่มในตะกร้า -->
-    <div id="cartItems" class="cart-items"></div>
-
-    <!-- สรุปข้อมูลรวม: ราคา, แคล, โปรตีน, คาร์บ -->
-    <div class="totals">
-      <p>รวมราคา <span id="totalPrice">0</span> ฿</p>
-      <p>รวมแคล <span id="totalCal">0</span></p>
-      <p>โปรตีน <span id="totalProtein">0</span> g</p>
-      <p>คาร์บ <span id="totalCarb">0</span> g</p>
-    </div>
-
-    <!-- ปุ่มคำสั่งต่าง ๆ ในตะกร้า -->
-    <button id="checkoutBtn" class="checkout-btn">สั่งซื้อ</button>
-    <button id="clearBtn" class="clear-btn">เคลียร์ตะกร้า</button>
-    <button id="checkStatusBtn" class="status-btn hidden">เช็คสถานะ</button>
-    <p id="successMsg" class="success-msg"></p> <!-- ข้อความยืนยันหลังสั่งซื้อ -->
-  </aside>
-
-  <!-- Popup แสดงสถานะออเดอร์ -->
-  <div id="statusPopup" class="status-modal hidden">
-    <div class="status-box">
-      <h2>สถานะออเดอร์</h2>
-      <p id="orderStatus">รอรับออเดอร์...</p>
-      <button id="closeStatus">ปิด</button>
-    </div>
+<header>
+  <div class="logo"> 
+    <a href="index.html"><span><img src="image/Count Cal Cup.png" alt=""></span></a>
   </div>
 
-  <!-- เสียงแจ้งเตือนเมื่อมีการเพิ่มสินค้าในตะกร้า -->
-  <audio id="dingSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7e5c30a4a3.mp3?filename=interface-124464.mp3" preload="auto"></audio>
+  <div class="header-right">
+    <div>
+      <a href="loginuser.html" id="staffLogin" class="staff-btn">เข้าสู่ระบบลูกค้า</a>
+      <a href="loginbackend.html" id="staffLogin" class="staff-btn">เข้าสู่ระบบพ่อครัว</a> 
+    </div>
+    <br>
+    <div class="cart-icon" id="cartIcon">🛒<span id="cartCount" class="cart-count">0</span></div>
+  </div>
+</header>
 
-  <!-- เชื่อมต่อไฟล์ JavaScript สำหรับหน้า shopF1 -->
-  <script src="shopF3.js"></script>
+<section class="hero">
+  <video autoplay muted loop class="hero-video">
+    <source src="video/res1.mp4" type="video/mp4">
+  </video>
+  <div class="hero-content">
+    <h1>SHOP FLOOR 3</h1>
+    <p>กดเลือกเมนูและสั่งอาหาร</p>
+  </div>
+</section>
+
+<main class="menu-container">
+  <div class="menu-grid" id="restaurantList">
+    <div class="menu-item restaurant" data-restaurant="">
+      <img src="image/cooking.png">
+      <h3>กะเพราหมา</h3>
+      <p>แคล 420 | โปรตีน 38g | คาร์บ 35g</p>
+      <p>40 บาท</p>
+      <button class="enter-btn">เพิ่มในตะกร้า</button>
+    </div>
+
+    <div class="menu-item restaurant" data-restaurant="">
+      <img src="image/cooking.png">
+      <h3>กะเพราควาย</h3>
+      <p>แคล 420 | โปรตีน 38g | คาร์บ 35g</p>
+      <p>40 บาท</p>
+      <button class="enter-btn">เพิ่มในตะกร้า</button>
+    </div>
+  </div>
+</main>
+
+<aside id="cartSidebar" class="cart-sidebar">
+  <div class="cart-header">
+    <button id="backBtn" class="back-btn">⬅ ย้อนกลับ</button>
+    <h2>ตะกร้าสินค้า</h2>
+  </div>
+
+  <div id="cartItems" class="cart-items"></div>
+
+  <div class="totals">
+    <p>รวมราคา <span id="totalPrice">0</span> ฿</p>
+    <p>รวมแคล <span id="totalCal">0</span></p>
+    <p>โปรตีน <span id="totalProtein">0</span> g</p>
+    <p>คาร์บ <span id="totalCarb">0</span> g</p>
+  </div>
+
+  <button id="checkoutBtn" class="checkout-btn">สั่งซื้อ</button>
+  <button id="clearBtn" class="clear-btn">เคลียร์ตะกร้า</button>
+  <button id="checkStatusBtn" class="status-btn hidden">เช็คสถานะ</button>
+  <p id="successMsg" class="success-msg"></p>
+</aside>
+
+<div id="statusPopup" class="status-modal hidden">
+  <div class="status-box">
+    <h2>สถานะออเดอร์</h2>
+    <p id="orderStatus">รอรับออเดอร์...</p>
+    <button id="closeStatus">ปิด</button>
+  </div>
+</div>
+
+<audio id="dingSound" src="" preload="auto"></audio>
+
+        <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <!-- ส่วนเกี่ยวกับเว็บไซต์ -->
+      <div class="footer-about">
+        <img src="image/Count Cal Cup.png" alt="Count Cal Cup" class="footer-logo-img">
+        <p>เว็บไซต์ของเราให้บริการอาหารและเมนูต่าง ๆ <br>ครบวงจรพร้อมโปรโมชั่นพิเศษทุกสัปดาห์</p>
+        <p>มุ่งมั่นให้คุณได้รับประสบการณ์ที่ดีที่สุดในการ <br>เลือกเมนูอาหาร</p>
+      </div>
+
+      <!-- ลิงก์ด่วน -->
+      <div class="footer-links">
+        <h3>ลิงก์ด่วน</h3>
+        <ul>
+          <li><a href="#">หน้าแรก</a></li>
+          <li><a href="#">เมนู</a></li>
+          <li><a href="#">เกี่ยวกับเรา</a></li>
+        </ul>
+      </div>
+
+      <!-- ข้อมูลติดต่อ -->
+      <div class="footer-contact">
+        <h3>ติดต่อเรา</h3>
+        <div class="social-icons">
+          <a href="#"><img src="image/discord.png" alt="Discord"></a>
+          <a href="#"><img src="image/youtube.png" alt="YouTube"></a>
+          <a href="#"><img src="image/tik-tok.png" alt="TikTok"></a>
+          <a href="#"><img src="image/facebook.png" alt="TikTok"></a>
+          <a href="#"><img src="image/instagram.png" alt="TikTok"></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ส่วนล่างสุดของ footer -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Count Cal Cup.</p>
+    </div>
+  </footer>
+
+<script src="shopF3.js"></script>
 </body>
 </html>

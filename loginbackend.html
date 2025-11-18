@@ -1,51 +1,46 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8"> <!-- กำหนดการเข้ารหัสตัวอักษร UTF-8 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- ทำให้หน้าเว็บ responsive -->
-  
-  <!-- นำฟอนต์ Montserrat และ Poppins จาก Google Fonts -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- โหลดฟอนต์จาก Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   
-  <title>เข้าสู่ระบบพ่อครัว</title> <!-- ชื่อแท็บของหน้า -->
-  
-  <!-- ลิงก์ไฟล์ CSS ภายนอก -->
+  <title>เข้าสู่ระบบพ่อครัว</title>
+  <!-- เชื่อมไฟล์ CSS สำหรับหน้า login backend -->
   <link rel="stylesheet" href="loginbackend.css">
 </head>
 <body>
-  <!-- Container หลักของหน้า login -->
-  <div class="login-container">
 
-    <!-- หัวข้อฟอร์มเข้าสู่ระบบ -->
-    <h2>เข้าสู่ระบบพ่อครัว</h2>
+  <!-- ===== ส่วน login container ===== -->
+  <div class="login-container">
+    <h2>เข้าสู่ระบบพ่อครัว</h2> <!-- หัวข้อหน้า -->
 
     <!-- ฟอร์ม login -->
-    <form action="backend.html"> <!-- ส่งข้อมูลไปยัง backend.html เมื่อกด submit -->
+    <form action="backend.html"> <!-- action ชี้ไปหน้า backend หลัง login -->
       
-      <!-- กลุ่มฟิลด์ Username -->
+      <!-- กลุ่ม input ชื่อผู้ใช้ -->
       <div class="form-group">
-        <label for="username">ชื่อผู้ใช้ (Username)</label> <!-- ป้ายชื่อ -->
-        <input type="text" id="username" name="username" placeholder="กรอกชื่อผู้ใช้" required> <!-- input username -->
+        <label for="username">ชื่อผู้ใช้ (Username)</label>
+        <input type="text" id="username" name="username" placeholder="กรอกชื่อผู้ใช้" required>
       </div>
 
-      <!-- กลุ่มฟิลด์ Password -->
+      <!-- กลุ่ม input รหัสผ่าน -->
       <div class="form-group">
-        <label for="password">รหัสผ่าน (Password)</label> <!-- ป้ายชื่อ -->
-        <input type="password" id="password" name="password" placeholder="กรอกรหัสผ่าน" required> <!-- input password -->
+        <label for="password">รหัสผ่าน (Password)</label>
+        <input type="password" id="password" name="password" placeholder="กรอกรหัสผ่าน" required>
       </div>
 
-      <!-- ปุ่ม submit -->
+      <!-- ปุ่มส่งฟอร์ม -->
       <button type="submit">เข้าสู่ระบบ</button>
     </form>
 
     <br>
-
-    <!-- ปุ่มย้อนกลับไปหน้าหลัก -->
+    <!-- ปุ่มกลับหน้าหลัก -->
     <button class="back-btn" onclick="window.location.href='index.html'">กลับหน้าหลัก</button>
+  </div>
 
-  </div> <!-- ปิด container login -->
-
-  <!-- ลิงก์ไฟล์ JavaScript ภายนอก -->
+  <!-- เชื่อมไฟล์ JavaScript สำหรับฟอร์ม login -->
   <script src="loginbackend.js"></script>
 </body>
 </html>

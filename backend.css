@@ -1,93 +1,91 @@
-/* ===================== */
-/* 🔹 Global / Body */
+/* ===== พื้นฐานของหน้า ===== */
 body {
-  font-family: "Poppins", sans-serif; /* ใช้ฟอนต์ Poppins */
-  margin: 0;                          /* ลบ margin ของ browser */
-  background: #f6fdf8;                /* พื้นหลังสีอ่อน */
-  color: #333;                        /* สีตัวอักษรหลัก */
+  font-family: "Poppins", sans-serif; /* ฟอนต์หลัก */
+  margin: 0; /* ลบ margin เริ่มต้น */
+  background: #f6fdf8; /* สีพื้นหลังอ่อน */
+  color: #333; /* สีข้อความหลัก */
 }
 
-/* ===================== */
-/* 🔹 Header */
+/* ===== Header ===== */
 header {
-  background: #1e1e1e;                /* สีพื้นหลัง header */
-  color: white;                        /* สีตัวอักษร */
-  display: flex;
-  justify-content: space-between;      /* จัดโลโก้ซ้าย nav ขวา */
-  align-items: center;                 /* จัดแนวกลางตามแนวแกน y */
-  padding: 30px 30px;                  /* ระยะห่างด้านบน-ล่าง ซ้าย-ขวา */
+  background: #1e1e1e; /* สีพื้นหลังเข้ม */
+  color: white; /* สีข้อความ */
+  display: flex; /* จัด layout เป็นแนวนอน */
+  justify-content: space-between; /* กระจาย logo และ nav */
+  align-items: center; /* จัดให้อยู่กลางแนวตั้ง */
+  padding: 30px 30px; /* ระยะขอบภายใน */
 }
 
 header .logo {
-  font-weight: 600;                     /* หนักตัวอักษร */
-  font-size: 20px;                      /* ขนาดตัวอักษร */
+  font-weight: 600; /* ตัวหนา */
+  font-size: 20px; /* ขนาดตัวอักษร */
 }
 
 header nav {
   display: flex;
   align-items: center;
-  gap: 10px; /* ระยะห่างระหว่างลิงก์ */
+  gap: 10px; /* เว้นระยะระหว่างลิงก์ */
 }
 
 header nav a {
-  color: white;
-  text-decoration: none;               /* ลบเส้นใต้ */
-  background: #00a86b;                 /* สีพื้นหลังปุ่ม */
+  color: white; /* สีข้อความลิงก์ */
+  text-decoration: none;
+  background: #00a86b; /* พื้นหลังสีเขียว */
   padding: 8px 15px;
-  border-radius: 10px;                 /* มุมโค้ง */
+  border-radius: 10px;
   transition: none;
 }
 
 header nav a:hover {
-  background: #008b5a;                 /* สีเปลี่ยนเมื่อ hover */
+  background: #008b5a; /* สีเมื่อ hover */
 }
 
-/* ===================== */
-/* 🔹 Main */
+/* ===== Main ===== */
 main {
   padding: 30px;
   text-align: center;
 }
 
 h1 {
-  color: #00a86b;
+  color: #00a86b; /* สีเขียวหัวข้อ */
   margin-bottom: 25px;
 }
 
-/* ===================== */
-/* 🔹 กล่องออเดอร์ */
+/* ===== Grid ของออเดอร์ ===== */
 .order-grid {
   display: flex;
-  flex-wrap: wrap;                     /* แถวใหม่ถ้าเกิน */
+  flex-wrap: wrap; /* จัดให้ item ขึ้นบรรทัดใหม่ถ้าเต็ม */
   justify-content: center;
-  gap: 20px;                           /* ระยะห่างระหว่างกล่อง */
+  gap: 20px; /* เว้นระยะระหว่าง item */
 }
 
+/* ===== กล่องออเดอร์ ===== */
 .order-box {
   background: white;
-  border-radius: 16px;
-  box-shadow: 0 0px 8px rgba(0,0,0,0.4); /* เงา */
-  width: 280px;
+  border-radius: 16px; /* มุมโค้ง */
+  box-shadow: 0 0px 8px rgba(0,0,0,0.4); /* เงาเล็กน้อย */
+  width: 280px; /* ความกว้าง */
   padding: 15px;
   text-align: left;
   transition: none;
 }
 
 .order-box:hover {
-  transform: none;                     /* ไม่ซูมเวลา hover */
+  transform: none; /* ไม่มี effect เมื่อ hover */
 }
 
 .order-box img {
   width: 80px;
   height: 80px;
-  object-fit: cover;                   /* ครอบรูปเต็มกล่อง */
-  border-radius: 12px;
+  object-fit: cover; /* ครอบคลุมพื้นที่โดยไม่บิด */
+  border-radius: 12px; /* มุมโค้ง */
   margin-bottom: 10px;
 }
 
+/* ===== ข้อมูลออเดอร์ ===== */
 .order-info h3 {
   margin: 5px 0;
-  color: #00a86b;
+  color: #00a86b; /* สีเขียวชื่อสินค้า */
 }
 
 .order-info p {
@@ -95,14 +93,13 @@ h1 {
   margin: 0 0 10px;
 }
 
-/* 🔹 Select dropdown */
+/* ===== Select สถานะออเดอร์ ===== */
 .order-info select {
-  appearance: none;                    /* ซ่อนลูกศรมาตรฐาน */
+  appearance: none; /* ลบ default arrow */
   background: #ffffff 
     url('data:image/svg+xml;utf8,<svg fill="%2300a86b" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') 
-      no-repeat right 5px center;     /* ใส่ลูกศรเอง */
+      no-repeat right 5px center; /* ใส่ลูกศรแบบ custom */
   background-size: 16px;
-
   width: 100%;
   padding: 7px;
   border-radius: 10px;
@@ -121,7 +118,6 @@ h1 {
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
-/* ตัว option ใน dropdown */
 .order-info select option {
   background-color: #ffffff8e;
   color: #000000;
@@ -130,7 +126,7 @@ h1 {
   border-radius: 10px;
 }
 
-/* 🔹 ปุ่มยืนยันสถานะ */
+/* ===== ปุ่มยืนยันสถานะ ===== */
 .submit-btn {
   background: #00a86b;
   color: white;
@@ -145,12 +141,11 @@ h1 {
   background: #008f5b;
 }
 
-/* ===================== */
-/* 🔹 ปุ่มโปรไฟล์ */
+/* ===== ปุ่มโปรไฟล์ ===== */
 .profile-btn {
   background: #00a86b;
   border: 2px solid #00a86b;
-  border-radius: 50%;                  /* กลม */
+  border-radius: 50%;
   width: 45px;
   height: 45px;
   padding: 0;
@@ -170,12 +165,11 @@ h1 {
   background: #008f5f;
 }
 
-/* ===================== */
-/* 🔹 แถบโปรไฟล์ (Slide Panel) */
+/* ===== แถบโปรไฟล์ (Slide Panel) ===== */
 .profile-panel {
   position: fixed;
   top: 0;
-  right: -100%;                         /* ซ่อนออกไปข้างนอก */
+  right: -100%; /* เริ่มต้นซ่อนข้างนอกจอ */
   width: 350px;
   height: 100vh;
   background: white;
@@ -189,10 +183,10 @@ h1 {
 }
 
 .profile-panel.active {
-  right: 0;                             /* แสดง panel เมื่อ active */
+  right: 0; /* แสดง panel */
 }
 
-/* 🔹 พื้นหลังมืดเมื่อเปิดโปรไฟล์ */
+/* Overlay ด้านหลัง panel */
 .profile-overlay {
   position: fixed;
   top: 0;
@@ -211,7 +205,7 @@ h1 {
   visibility: visible;
 }
 
-/* 🔹 ปุ่มย้อนกลับใน panel */
+/* ปุ่มปิด panel */
 .close-btn {
   align-self: flex-start;
   background: #00a86b;
@@ -230,7 +224,7 @@ h1 {
   background: #008f5f;
 }
 
-/* 🔹 เนื้อหาภายในโปรไฟล์ */
+/* เนื้อหาใน panel */
 .profile-content {
   text-align: center;
 }
@@ -255,6 +249,7 @@ h1 {
   font-size: 14px;
 }
 
+/* ปุ่ม Log out */
 .logout-btn {
   background: #00a86b;
   color: #fff;
@@ -265,20 +260,19 @@ h1 {
   margin-top: 15px;
   font-size: 15px;
   transition: 0.3s;
-
 }
 
 .logout-btn:hover {
-  background-color: #ff4d4d;
+  background-color: #ff4d4d; /* เปลี่ยนเป็นแดงเมื่อ hover */
 }
 
+/* ===== ลิงก์ทั่วไป ===== */
 a {
   color: white;
   text-decoration: none;
 }
 
-/* ===================== */
-/* 🔹 Popup สถานะกลางจอ */
+/* ===== Popup overlay ===== */
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -298,6 +292,7 @@ a {
   opacity: 1;
 }
 
+/* ===== Popup box ===== */
 .popup-box {
   background: #fff;
   padding: 30px 40px;
@@ -315,7 +310,7 @@ a {
   opacity: 1;
 }
 
-/* ปุ่ม OK ใน popup */
+/* ===== ปุ่ม OK ใน popup ===== */
 .ok-btn {
   background: #00a86b;
   color: #fff;
@@ -332,7 +327,7 @@ a {
   background: #008f5f;
 }
 
-/* 🔹 แอนิเมชันติ๊กถูก */
+/* ===== แอนิเมชันติ๊กถูก ===== */
 .checkmark-container {
   width: 70px;
   height: 70px;
@@ -343,7 +338,7 @@ a {
   align-items: center;
   margin: 0 auto 15px;
   position: relative;
-  animation: popIn 0.4s ease;           /* animation โผล่มา */
+  animation: popIn 0.4s ease;
 }
 
 .checkmark {
@@ -351,12 +346,12 @@ a {
   height: 45px;
   border-right: 5px solid #00a86b;
   border-bottom: 5px solid #00a86b;
-  transform: rotate(45deg) scale(0);   /* เริ่มจาก scale 0 */
+  transform: rotate(45deg) scale(0);
   transform-origin: center;
   animation: checkmark 0.6s ease 0.3s forwards;
 }
 
-/* Animation keyframes */
+/* ===== Keyframes แอนิเมชัน ===== */
 @keyframes popIn {
   from { transform: scale(0); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
@@ -364,4 +359,120 @@ a {
 
 @keyframes checkmark {
   to { transform: rotate(45deg) scale(1); }
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  background-color: #1e1e1e;
+  color: #fff;
+  padding: 40px 20px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* จัด layout ภายใน footer */
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ส่วนต่างๆใน footer */
+.footer-about,
+.footer-links,
+.footer-contact {
+  flex: 1 1 250px; /* ขยายตามขนาดหน้าจอ */
+}
+
+/* โลโก้ใน footer */
+.footer-logo-img {
+  width: 150px;
+  margin-bottom: 15px;
+}
+
+/* หัวข้อใน footer */
+.footer-links h3,
+.footer-contact h3 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+/* รายการลิงก์ */
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #00a86b;
+}
+
+/* ข้อมูลติดต่อ */
+.footer-contact p {
+  margin: 5px 0;
+}
+
+.footer-links h3,
+.footer-contact h3 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.footer-links h3::after,
+.footer-contact h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;       /* ความหนาเส้น */
+  background: #00a86b;  /* สีเส้นใต้ เปลี่ยนได้ */
+  border-radius: 5px;
+}
+
+/* ไอคอนโซเชียล */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.social-icons a img {
+  width: 24px;
+  transition: transform 0.3s;
+  filter: grayscale(100%) brightness(0) invert(100%); /* ปรับสีพื้นฐาน */
+}
+
+.social-icons a:hover img {
+  transform: scale(1.2); /* ขยายไอคอนเมื่อ hover */
+}
+
+/* ส่วนล่างสุด footer */
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  border-top: 2px solid #00a86b;
+  padding-top: 15px;
+  font-size: 14px;
+  color: #aaa;
 }

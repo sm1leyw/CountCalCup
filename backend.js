@@ -1,55 +1,49 @@
-// =====================
-// 🔹 จัดการปุ่มโปรไฟล์ (Slide Panel)
-// =====================
-const profileBtn = document.getElementById("profileBtn");     // ปุ่มเปิดแถบโปรไฟล์
-const profilePanel = document.getElementById("profilePanel"); // แถบโปรไฟล์
-const closeProfile = document.getElementById("closeProfile"); // ปุ่มปิดแถบ
-const overlay = document.getElementById("profileOverlay");    // พื้นหลังมืดเมื่อเปิดแถบ
+/* ===== จับ element ของโปรไฟล์ panel ===== */
+const profileBtn = document.getElementById("profileBtn"); // ปุ่มเปิด panel
+const profilePanel = document.getElementById("profilePanel"); // แถบ panel ของโปรไฟล์
+const closeProfile = document.getElementById("closeProfile"); // ปุ่มปิด panel
+const overlay = document.getElementById("profileOverlay"); // Overlay ด้านหลัง panel
 
-// เมื่อกดปุ่มโปรไฟล์ → แถบข้างเลื่อนออกมา
+/* ===== เปิด panel เมื่อกดปุ่มโปรไฟล์ ===== */
 profileBtn.addEventListener("click", () => {
-  profilePanel.classList.add("active");  // เพิ่ม class "active" เพื่อเลื่อน panel ออกมา
-  overlay.classList.add("active");       // แสดงพื้นหลังมืด
+  profilePanel.classList.add("active"); // เพิ่ม class .active ให้ panel
+  overlay.classList.add("active");      // เพิ่ม class .active ให้ overlay
 });
 
-// เมื่อกดปุ่มปิดหรือคลิกพื้นหลัง → แถบเลื่อนกลับ
-closeProfile.addEventListener("click", closeProfilePanel);
-overlay.addEventListener("click", closeProfilePanel);
+/* ===== ปิด panel เมื่อกดปุ่มปิดหรือ overlay ===== */
+closeProfile.addEventListener("click", closeProfilePanel); // ปุ่ม ←
+overlay.addEventListener("click", closeProfilePanel);      // คลิกที่ overlay ก็ปิดได้
 
+/* ===== ฟังก์ชันปิด panel ===== */
 function closeProfilePanel() {
-  profilePanel.classList.remove("active"); // ซ่อน panel
+  profilePanel.classList.remove("active"); // เอา class .active ออก
   overlay.classList.remove("active");      // ซ่อน overlay
 }
 
-// =====================
-// 🔹 ปุ่มยืนยันสถานะ (แต่ละรายการออเดอร์)
-// =====================
-const submitButtons = document.querySelectorAll(".submit-btn"); // เลือกปุ่มยืนยันทั้งหมด
+/* ===== จับปุ่มยืนยันสถานะออเดอร์ทั้งหมด ===== */
+const submitButtons = document.querySelectorAll(".submit-btn");
 
+/* ===== เพิ่ม event ให้แต่ละปุ่ม ===== */
 submitButtons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
-    const orderBox = e.target.closest(".order-box"); // หา container ของออเดอร์ที่กดปุ่ม
-    const select = orderBox.querySelector("select"); // ดึง select ของออเดอร์นั้น
+    const orderBox = e.target.closest(".order-box"); // หา order-box ที่ปุ่มนี้อยู่
+    const select = orderBox.querySelector("select"); // หา select ของออเดอร์
     const foodName = orderBox.querySelector("h3").innerText; // ชื่ออาหาร
-    const status = select.value; // สถานะที่เลือก
+    const status = select.value; // ค่าที่เลือกจาก select
 
-    // แสดงแจ้งเตือนแบบ popup กลางจอ (พร้อมติ๊กถูก)
-    showStatusPopup(`${foodName} ${status}`);
+    showStatusPopup(`${foodName} ${status}`); // แสดง popup แจ้งสถานะ
   });
 });
 
-// =====================
-// 🔹 ฟังก์ชันแสดง popup กลางจอ
-// =====================
+/* ===== ฟังก์ชันสร้าง popup ===== */
 function showStatusPopup(message) {
-  // สร้าง overlay + popup
-  const popupOverlay = document.createElement("div");
-  popupOverlay.className = "popup-overlay"; // ใช้ class สำหรับ styling overlay
+  const popupOverlay = document.createElement("div"); // สร้าง overlay ใหม่
+  popupOverlay.className = "popup-overlay";
 
-  const popupBox = document.createElement("div");
-  popupBox.className = "popup-box";         // ใช้ class สำหรับกล่อง popup
+  const popupBox = document.createElement("div"); // สร้างกล่อง popup
+  popupBox.className = "popup-box";
 
-  // ใส่เนื้อหาภายใน popup
+  /* ===== ใส่ HTML ของ popup ===== */
   popupBox.innerHTML = `
     <div class="checkmark-container">
       <div class="checkmark"></div> <!-- แอนิเมชันติ๊กถูก -->
@@ -58,18 +52,18 @@ function showStatusPopup(message) {
     <button class="ok-btn">ตกลง</button> <!-- ปุ่มปิด popup -->
   `;
 
-  popupOverlay.appendChild(popupBox);     // ใส่ popup ลงใน overlay
+  popupOverlay.appendChild(popupBox); // ใส่กล่อง popup ลง overlay
   document.body.appendChild(popupOverlay); // ใส่ overlay ลงใน body
 
-  // แสดงแอนิเมชันแบบ delay เล็กน้อย
+  /* ===== แสดง popup ด้วย animation ===== */
   setTimeout(() => {
-    popupOverlay.classList.add("show"); // เพิ่ม class show → opacity 1
-    popupBox.classList.add("show");     // เพิ่ม class show → scale 1
-  }, 50);
+    popupOverlay.classList.add("show"); // overlay fade in
+    popupBox.classList.add("show");     // popup scale in
+  }, 50); // ดีเลย์เล็กน้อยเพื่อให้ transition ทำงาน
 
-  // ปิด popup เมื่อกดปุ่ม OK
+  /* ===== ปิด popup เมื่อกดปุ่มตกลง ===== */
   popupBox.querySelector(".ok-btn").addEventListener("click", () => {
-    popupOverlay.classList.remove("show"); // เริ่ม animation ปิด
-    setTimeout(() => popupOverlay.remove(), 300); // ลบ element หลัง animation เสร็จ
+    popupOverlay.classList.remove("show"); // ซ่อน overlay และ popup
+    setTimeout(() => popupOverlay.remove(), 300); // ลบ element หลัง animation
   });
 }
