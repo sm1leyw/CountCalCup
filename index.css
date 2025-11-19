@@ -149,6 +149,10 @@ header {
   border-radius: 10px;
   border: solid 4px #00a86b;
 }
+.menu-item :hover {
+  transform: scale(1.05); /* ขยายเมื่อ hover */
+  transition: transform 0.3s;
+}
 
 /* ชื่อชั้นอาหาร */
 .food-floor-title {
