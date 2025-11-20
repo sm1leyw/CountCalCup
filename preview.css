@@ -428,7 +428,7 @@ a {
   color: #aaa;
 }
 
-/* น้อมรำลึก pop-up */
+/* ================= น้อมรำลึก pop-up ==================== */
 .popup-overlay {
     position: fixed;
     inset: 0;
@@ -448,7 +448,7 @@ a {
 
 /* รูปแสดงตรงกลาง */
 .tribute-img {
-    width: 550px;
+    width: 400px;
     max-width: 90vw;
     border-radius: 10px;
 }
