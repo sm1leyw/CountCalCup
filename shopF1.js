@@ -1,74 +1,81 @@
-const cartIcon = document.getElementById("cartIcon");
-const cartSidebar = document.getElementById("cartSidebar");
-const backBtn = document.getElementById("backBtn");
-const clearBtn = document.getElementById("clearBtn");
-const checkoutBtn = document.getElementById("checkoutBtn");
-const checkStatusBtn = document.getElementById("checkStatusBtn");
-const cartItems = document.getElementById("cartItems");
-const totalPriceEl = document.getElementById("totalPrice");
-const totalCalEl = document.getElementById("totalCal");
-const totalProteinEl = document.getElementById("totalProtein");
-const totalCarbEl = document.getElementById("totalCarb");
-const cartCount = document.getElementById("cartCount");
-const successMsg = document.getElementById("successMsg");
-const dingSound = document.getElementById("dingSound");
+/* ===================== เก็บ element ===================== */
+const cartIcon = document.getElementById("cartIcon");           // ไอคอนตะกร้า
+const cartSidebar = document.getElementById("cartSidebar");     // sidebar ตะกร้า
+const backBtn = document.getElementById("backBtn");             // ปุ่มกลับ sidebar
+const clearBtn = document.getElementById("clearBtn");           // ปุ่มเคลียร์ตะกร้า
+const checkoutBtn = document.getElementById("checkoutBtn");     // ปุ่มสั่งซื้อ
+const checkStatusBtn = document.getElementById("checkStatusBtn"); // ปุ่มตรวจสอบสถานะ
+const cartItems = document.getElementById("cartItems");         // container รายการสินค้าในตะกร้า
+const totalPriceEl = document.getElementById("totalPrice");     // element แสดงราคารวม
+const totalCalEl = document.getElementById("totalCal");         // element แสดงแคลอรี่รวม
+const totalProteinEl = document.getElementById("totalProtein"); // element แสดงโปรตีนรวม
+const totalCarbEl = document.getElementById("totalCarb");       // element แสดงคาร์บรวม
+const cartCount = document.getElementById("cartCount");         // element แสดงจำนวนสินค้าในตะกร้า
+const dingSound = document.getElementById("dingSound");         // เสียงเพิ่มสินค้า
 
-const statusPopup = document.getElementById("statusPopup");
-const orderStatus = document.getElementById("orderStatus");
-const closeStatus = document.getElementById("closeStatus");
+// popup สถานะ
+const statusPopup = document.getElementById("statusPopup");     // overlay popup
+const orderStatus = document.getElementById("orderStatus");     // ข้อความสถานะ
+const closeStatus = document.getElementById("closeStatus");     // ปุ่มปิด popup
 
-const backToStores = document.getElementById("backToStores");
-const menuPage = document.getElementById("menuPage");
-const restaurantList = document.getElementById("restaurantList");
+/* ===================== ตัวแปรเก็บสินค้า ===================== */
+let cart = []; // array เก็บสินค้า {name, price, cal, protein, carb, qty}
 
-let cart = [];
+/* ===================== เปิด/ปิด Sidebar ===================== */
+cartIcon.addEventListener("click", () => cartSidebar.classList.add("active")); // เปิด sidebar
+backBtn.addEventListener("click", () => cartSidebar.classList.remove("active")); // ปิด sidebar
 
-cartIcon.addEventListener("click", () => cartSidebar.classList.add("active"));
-backBtn.addEventListener("click", () => cartSidebar.classList.remove("active"));
-
-const addButtons = document.querySelectorAll(".enter-btn");
+/* ===================== เพิ่มสินค้าเข้าสู่ตะกร้า ===================== */
+const addButtons = document.querySelectorAll(".enter-btn"); // ปุ่ม "เพิ่มในตะกร้า"
 
 addButtons.forEach(btn => {
   btn.addEventListener("click", (e) => {
-    const item = e.target.closest(".menu-item");
-    const name = item.querySelector("h3").innerText;
-    const price = parseFloat(item.querySelector("p:nth-of-type(2)").innerText);
-    const info = item.querySelector("p:nth-of-type(1)").innerText;
+    const item = e.target.closest(".menu-item"); // หา container menu-item
+    const name = item.querySelector("h3").innerText; // ชื่อสินค้า
+    const price = parseFloat(item.querySelector("p:nth-of-type(2)").innerText.replace(" บาท","")); // ราคา
+    const info = item.querySelector("p:nth-of-type(1)").innerText; // ข้อมูล nutrition
 
+    // แปลงข้อมูล nutrition เป็นตัวเลข
     const cal = parseInt(info.match(/แคล (\d+)/)[1]);
     const protein = parseInt(info.match(/โปรตีน (\d+)/)[1]);
     const carb = parseInt(info.match(/คาร์บ (\d+)/)[1]);
 
+    // ตรวจสอบว่ามีสินค้านี้ในตะกร้าแล้วหรือไม่
     const existing = cart.find(c => c.name === name);
     if (existing) {
-      existing.qty += 1;
+      existing.qty += 1; // เพิ่มจำนวน
     } else {
-      cart.push({ name, price, cal, protein, carb, qty: 1 });
+      cart.push({ name, price, cal, protein, carb, qty: 1 }); // เพิ่มใหม่
     }
 
-    updateCart();
+    updateCart(); // อัปเดตตะกร้า
 
-    if (dingSound) {
+    // เล่นเสียง ding
+    if (dingSound && dingSound.src) {
       dingSound.currentTime = 0;
       dingSound.play();
     }
 
+    // แสดงเอฟเฟกต์ pop ที่จำนวนสินค้า
     cartCount.classList.add("pop");
     setTimeout(() => cartCount.classList.remove("pop"), 200);
   });
 });
 
+/* ===================== ฟังก์ชันอัปเดตตะกร้า ===================== */
 function updateCart() {
-  cartItems.innerHTML = "";
+  cartItems.innerHTML = ""; // ล้างรายการก่อน
   let totalPrice = 0, totalCal = 0, totalProtein = 0, totalCarb = 0, count = 0;
 
   cart.forEach((item, index) => {
+    // คำนวณผลรวม
     totalPrice += item.price * item.qty;
     totalCal += item.cal * item.qty;
     totalProtein += item.protein * item.qty;
     totalCarb += item.carb * item.qty;
     count += item.qty;
 
+    // สร้าง div แสดงสินค้าแต่ละชิ้น
     const div = document.createElement("div");
     div.classList.add("cart-item");
     div.innerHTML = `
@@ -79,48 +86,54 @@ function updateCart() {
     cartItems.appendChild(div);
   });
 
+  // อัปเดตจำนวนสินค้า
   cartCount.textContent = count;
   cartCount.style.display = count > 0 ? "block" : "none";
 
+  // อัปเดตรายละเอียดรวม
   totalPriceEl.textContent = totalPrice.toFixed(2);
   totalCalEl.textContent = totalCal;
   totalProteinEl.textContent = totalProtein;
   totalCarbEl.textContent = totalCarb;
-
-  document.querySelectorAll(".remove-btn").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      const index = e.target.dataset.index;
-      if (cart[index].qty > 1) {
-        cart[index].qty -= 1;
-      } else {
-        cart.splice(index, 1);
-      }
-      updateCart();
-    });
-  });
 }
 
-clearBtn.addEventListener("click", () => {
-  cart = [];
+/* ===================== ลบสินค้า 1 ชิ้น ===================== */
+cartItems.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("remove-btn")) return; // ตรวจสอบปุ่มลบ
+  const index = e.target.dataset.index;
+  if (cart[index].qty > 1) {
+    cart[index].qty -= 1; // ลดจำนวน
+  } else {
+    cart.splice(index, 1); // ลบออกจาก array
+  }
   updateCart();
 });
 
+/* ===================== เคลียร์ตะกร้า ===================== */
+clearBtn.addEventListener("click", () => {
+  cart = [];        // ลบสินค้าใน array
+  updateCart();     // อัปเดตตะกร้า
+});
+
+/* ===================== สั่งซื้อ ===================== */
 checkoutBtn.addEventListener("click", () => {
   if (cart.length === 0) {
     alert("ยังไม่มีสินค้าในตะกร้า!");
     return;
   }
 
-  showSuccessPopup();
+  showSuccessPopup(); // แสดง popup สั่งซื้อสำเร็จ
 
-  if (dingSound) dingSound.play();
+  // เล่นเสียง ding
+  if (dingSound && dingSound.src) dingSound.play();
 
-  cart = [];
-  updateCart();
+  cart = [];         // ลบสินค้าใน array
+  updateCart();      // อัปเดตตะกร้า
 
-  checkStatusBtn.classList.remove("hidden");
+  checkStatusBtn.classList.remove("hidden"); // แสดงปุ่มตรวจสอบสถานะ
 });
 
+/* ===================== ฟังก์ชัน popup สั่งซื้อสำเร็จ ===================== */
 function showSuccessPopup() {
   const popup = document.createElement("div");
   popup.className = "success-popup";
@@ -132,35 +145,33 @@ function showSuccessPopup() {
           <path class="checkmark-check" fill="none" d="M14 27l7 7 16-16"/>
         </svg>
       </div>
-      <h2>สั่งซื้อสำเร็จ!</h2>
+      <h2>สั่งซื้อสำเร็จ</h2>
       <button id="okBtn">ตกลง</button>
     </div>
   `;
   document.body.appendChild(popup);
 
+  // ปุ่มตกลงปิด popup
   document.getElementById("okBtn").addEventListener("click", () => popup.remove());
 }
 
+/* ===================== ตรวจสอบสถานะ ===================== */
 checkStatusBtn.addEventListener("click", () => {
-  statusPopup.classList.remove("hidden");
-  orderStatus.textContent = "กำลังทำอาหาร 🍳";
+  statusPopup.classList.remove("hidden"); // แสดง popup overlay
+  orderStatus.textContent = "กำลังทำอาหาร 🍳"; // ขั้นตอนแรก
 
+  // หลัง 5 วินาที เปลี่ยนสถานะเป็นจัดส่งแล้ว
   setTimeout(() => {
     orderStatus.textContent = "จัดส่งแล้ว 🚚";
   }, 5000);
 
+  // หลัง 8 วินาที ปิด popup
   setTimeout(() => {
     statusPopup.classList.add("hidden");
   }, 8000);
 });
 
+/* ===================== ปิด popup สถานะ ===================== */
 closeStatus.addEventListener("click", () => {
   statusPopup.classList.add("hidden");
 });
-
-if (backToStores) {
-  backToStores.addEventListener("click", () => {
-    menuPage.classList.add("hidden");
-    restaurantList.classList.remove("hidden");
-  });
-}

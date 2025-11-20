@@ -4,63 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Count Cal Cup - ยินดีต้อนรับ</title>
-    
+
+    <!-- ฟอนต์จาก Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+
+    <!-- ไอคอน Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- ไฟล์สไตล์หลัก -->
     <link rel="stylesheet" href="preview.css">
 </head>
 <body>
+    <!-- Pop-up น้อมรำลึก -->
+    <div id="tributePopup" class="popup-overlay">
+        <div class="popup-box">
+            <img src="image/น้อมรำลึก.png" alt="น้อมรำลึก" class="tribute-img">
 
+            <!-- ปุ่มปิดแบบกากบาท -->
+            <div id="closePopup" class="close-x">×</div>
+        </div>
+    </div>
+
+    <!-- แถบนำทาง (Navbar) -->
     <nav class="navbar">
+
+        <!-- โลโก้เว็บไซต์ -->
         <div class="logo">
-            <i class="fa-solid fa-bowl-food" style="color: var(--primary-green);"></i>
-            Count Cal Cup
-        </div>
-        
-        <div class="hamburger" id="hamburger-btn">
-            <i class="fa-solid fa-bars"></i>
+            <a href="preview.html">
+                <span><img src="image/Count Cal Cup.png" alt=""></span>
+            </a>
         </div>
 
+        <!-- เมนูนำทาง -->
         <div class="nav-menu" id="nav-menu">
             <a href="#" class="nav-link">หน้าแรก</a>
             <a href="#zones" class="nav-link">ร้านค้า</a>
             <a href="#" class="nav-link">บทความสุขภาพ</a>
-            
-            <div class="mobile-auth-buttons"> 
-                <button type="button" class="btn btn-primary"><a href="loginuser.html">เข้าสู่ระบบลูกค้า</a></button>
-                <button type="button" class="btn btn-outline"><a href="login.html">เข้าสู่ระบบพ่อครัว</a></button>
-            </div>
         </div>
 
+        <!-- ปุ่มเข้าสู่ระบบ (สำหรับหน้าจอเดสก์ท็อป) -->
         <div class="desktop-auth-buttons">
-            <button type="button" class="btn btn-primary" ><a href="loginuser.html">เข้าสู่ระบบลูกค้า</button>
-            <button type="button" class="btn btn-outline"><a href="login.html">เข้าสู่ระบบพ่อครัว</a></button>
+            <button type="button" class="btn btn-primary"><a href="loginuser.html">เข้าสู่ระบบลูกค้า</a></button>
+            <button type="button" class="btn btn-outline"><a href="loginbackend.html">เข้าสู่ระบบพ่อครัว</a></button>
         </div>
     </nav>
 
+    <!-- ส่วนหัวของหน้า (Hero Section) -->
     <header class="hero">
         <div class="hero-content">
-            <h1>สุขภาพดี...เริ่มที่การกิน</h1>
-            <p>เลือกร้านอาหารในโรงอาหาร พร้อมคำนวณแคลอรี่แบบ Real-time<br>ให้ทุกมื้อของคุณ อร่อยและสุขภาพดีไปพร้อมกัน</p>
-            <a href="loginuser.html" class="btn btn-primary hero-btn">สั่งอาหารเลย<i class="fa-solid fa-arrow-right"></i></a>
+            <h1>สุขภาพดี เริ่มที่การกิน</h1>
+            <p>เลือกร้านอาหารในโรงอาหาร พร้อมคำนวณแคลอรี่แบบ Real-time <br>ให้ทุกมื้อของคุณ อร่อยและสุขภาพดีไปพร้อมกัน</p>
+            <a href="loginuser.html" class="btn btn-primary hero-btn">สั่งอาหารเลย <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </header>
 
+    <!-- จุดเด่นของเว็บ (Features) -->
     <section class="features">
         <div class="feature-item">
             <i class="fa-solid fa-calculator"></i>
             <h3>คำนวณแคลอรี่แม่นยำ</h3>
             <p>รู้ยอดพลังงานก่อนทาน ด้วยระบบคำนวณอัตโนมัติ</p>
         </div>
+
         <div class="feature-item">
             <i class="fa-solid fa-store"></i>
             <h3>รวมร้านดังครบทุกชั้น</h3>
             <p>ไม่ต้องเดินหา เรารวบรวมเมนูจากทุกร้านไว้ที่นี่</p>
         </div>
+
         <div class="feature-item">
             <i class="fa-solid fa-heart-pulse"></i>
             <h3>เมนูทางเลือกเพื่อสุขภาพ</h3>
@@ -68,12 +81,15 @@
         </div>
     </section>
 
+    <!-- โซนร้านค้า -->
     <section class="zones" id="zones">
-        <h2 class="section-title">เลือกโซน <span>โรงอาหาร</span></h2>
+        <h2 class="section-title">เลือกร้าน <span>ที่คุณต้องการ</span></h2>
         
         <div class="zone-grid">
+
+            <!-- โซนร้านชั้น 1 -->
             <div class="zone-card">
-                <div class="zone-img" style="background-image: url('image/ร้านข้าวขาหมูชั้น1.jpg');"></div>
+                <div class="zone-img" style="background-image: url('image/ร้านข้าวแกงชั้น1.jpg');"></div>
                 <div class="zone-info">
                     <h3>Shop Floor 1</h3>
                     <p>ศูนย์อาหารหลัก ร้านข้าวแกงและอาหารตามสั่ง</p>
@@ -81,6 +97,7 @@
                 </div>
             </div>
 
+            <!-- โซนร้านชั้น 2 -->
             <div class="zone-card">
                 <div class="zone-img" style="background-image: url('image/ร้านยายกะหลานชั้น2.jpg');"></div>
                 <div class="zone-info">
@@ -90,6 +107,7 @@
                 </div>
             </div>
 
+            <!-- โซนร้านชั้น 3 -->
             <div class="zone-card">
                 <div class="zone-img" style="background-image: url('image/ร้านHomeyชั้น3.jpg');"></div>
                 <div class="zone-info">
@@ -98,13 +116,52 @@
                     <a href="loginuser.html" class="view-btn">ดูร้านค้า <i class="fa-solid fa-chevron-right"></i></a>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2024 Count Cal Cup. All rights reserved.</p>
+    <!-- ส่วนท้ายเว็บไซต์ (Footer) -->
+    <footer class="site-footer">
+        <div class="footer-container">
+
+            <!-- เกี่ยวกับเว็บไซต์ -->
+            <div class="footer-about">
+                <img src="image/Count Cal Cup.png" alt="Count Cal Cup" class="footer-logo-img">
+                <p>เว็บไซต์ของเราให้บริการอาหารและเมนูต่าง ๆ <br>ครบวงจรพร้อมโปรโมชั่นพิเศษทุกสัปดาห์</p>
+                <p>มุ่งมั่นให้คุณได้รับประสบการณ์ที่ดีที่สุดในการ <br>เลือกเมนูอาหาร</p>
+            </div>
+
+            <!-- ลิงก์เมนูด่วน -->
+            <div class="footer-links">
+                <h3>ลิงก์ด่วน</h3>
+                <ul>
+                    <li><a href="preview.html">หน้าแรก</a></li>
+                    <li><a href="preview.html">เมนู</a></li>
+                    <li><a href="preview.html">เกี่ยวกับเรา</a></li>
+                </ul>
+            </div>
+
+            <!-- ช่องทางการติดต่อ -->
+            <div class="footer-contact">
+                <h3>ติดต่อเรา</h3>
+                <div class="social-icons">
+                    <a href="#"><img src="image/discord.png" alt="Discord"></a>
+                    <a href="#"><img src="image/youtube.png" alt="YouTube"></a>
+                    <a href="#"><img src="image/tik-tok.png" alt="TikTok"></a>
+                    <a href="#"><img src="image/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="image/instagram.png" alt="Instagram"></a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ลิขสิทธิ์ -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Count Cal Cup.</p>
+        </div>
     </footer>
 
+    <!-- สคริปต์ของหน้าเว็บ -->
     <script src="preview.js"></script>
 </body>
 </html>

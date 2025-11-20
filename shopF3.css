@@ -1,69 +1,94 @@
+/* ===================== รีเซ็ต & กำหนดค่าเริ่มต้น ===================== */
+* {
+  margin: 0;               /* ลบค่า margin เริ่มต้นของทุก element */
+  padding: 0;              /* ลบค่า padding เริ่มต้น */
+  box-sizing: border-box;  /* รวม padding และ border เข้าใน width/height */
+}
+
 body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  background: #ffffff;
+  font-family: "Prompt", sans-serif; /* ฟอนต์หลักของเว็บไซต์ */
+  background: #eeeeee;               /* สีพื้นหลัง */
+  color: #1e1e1e;                    /* สีตัวอักษรหลัก */
+  line-height: 1.6;                  /* ระยะบรรทัด */
 }
 
+a {
+  text-decoration: none; /* ลบเส้นใต้ลิงก์ */
+  color: inherit;        /* ใช้สีตาม parent */
+}
+
+button {
+  cursor: pointer;       /* เปลี่ยน cursor เป็น pointer */
+  border: none;          /* ลบขอบปุ่ม */
+  border-radius: 8px;    /* ปรับมุมโค้ง */
+}
+
+/* ===================== ซ่อน element ===================== */
 .hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  opacity: 0;                   /* ความโปร่งใส 0 */
+  visibility: hidden;           /* ซ่อน element */
+  pointer-events: none;         /* ไม่สามารถคลิกหรือ hover ได้ */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* แอนิเมชันซ่อน/แสดง */
 }
 
-header {
-  background: #1e1e1e;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 30px;
-}
-
-.logo {
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.5rem;
+/* ===================== Navbar ===================== */
+.navbar {
+  background-color: #1e1e1e;  /* สีพื้นหลัง navbar */
+  padding: 10px 30px;          /* ระยะห่างด้านใน */
+  display: flex;               /* จัด layout แบบ flex */
+  justify-content: space-between; /* กระจายพื้นที่ซ้าย-ขวา */
+  align-items: center;         /* จัดแนวกลางแนวตั้ง */
+  position: sticky;            /* ติดบน viewport */
+  top: 0;
+  z-index: 1000;               /* ให้อยู่เหนือ element อื่น */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* เงา */
 }
 
 .logo img {
-  width: 70px;
+  width: 70px; /* ขนาดโลโก้ */
   height: auto;
-  display: block;
-}
-
-.logo a {
-  text-decoration: none;
-  color: #ffffff;
 }
 
 .logo a:hover {
-  color: #dddddd;
-  transform: scale(2);
+  transform: scale(1.2); /* ขยายเมื่อ hover */
+  transition: 0.3s;
 }
 
+.desktop-auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* ระยะห่างปุ่ม */
+}
+
+/* ===================== ไอคอนตะกร้า ===================== */
 .cart-icon {
-  position: relative;
-  margin-left: 88%;
+  position: relative;    /* ตั้งตำแหน่ง relative เพื่อใช้กับ badge */
   font-size: 1.5rem;
   cursor: pointer;
   color: #ffffff;
 }
 
 .cart-count {
-  position: absolute;
+  position: absolute;    /* badge ติดบน icon */
   top: -8px;
   right: -10px;
-  background: red;
-  color: rgb(255, 255, 255);
-  border-radius: 50%;
   width: 18px;
   height: 18px;
-  font-size: 0.8rem;
-  text-align: center;
   line-height: 18px;
-  display: none;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #fff;
+  background: red;
+  border-radius: 50%;    /* ทำเป็นวงกลม */
+  display: none;         /* ซ่อนเริ่มต้น */
 }
 
+.cart-count.pop {
+  transform: scale(1.5); /* ขยายเมื่อ pop */
+  transition: transform 0.2s;
+}
+
+/* ===================== ส่วน Hero (วีดีโอ/ข้อความ) ===================== */
 .hero {
   position: relative;
   width: 100%;
@@ -72,26 +97,25 @@ header {
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #ffffff;
+  color: #fff;
   overflow: hidden;
-  background-color: #000;
+  background-color: #000; /* สีพื้นหลัง fallback */
 }
 
 .hero-video {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* ครอบเต็ม container */
   z-index: 0;
-  filter: brightness(60%);
+  filter: brightness(60%); /* ลดความสว่าง */
 }
 
 .hero-content {
   position: relative;
-  z-index: 1;
-  text-shadow: 0px 0px 7px rgb(0, 0, 0);
+  z-index: 1; /* อยู่เหนือวีดีโอ */
+  text-shadow: 0px 0px 7px rgba(0,0,0,0.7); /* เงาข้อความ */
 }
 
 .hero-content h1 {
@@ -105,6 +129,7 @@ header {
   opacity: 0.9;
 }
 
+/* ===================== เมนูอาหาร ===================== */
 .menu-container {
   padding: 40px;
   display: flex;
@@ -113,60 +138,102 @@ header {
 
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 100px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* responsive */
+  gap: 40px;
   max-width: 1000px;
 }
 
 .menu-item {
-  background: white;
-  padding: 20px;
-  text-align: center;
-  border-radius: 16px;
-  box-shadow: 0 0px 8px rgba(0,0,0,0.4);
-  width: 300px;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
 .menu-item img {
-  width: 80px;
-  height: 80px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.5s;
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
+.menu-item:hover img {
+  transform: scale(1.05);
 }
 
-.enter-btn, .add-btn {
-  background: #00a86b;
-  color: white;
+.menu-item h3, .menu-item p {
+  text-align: center;
+}
+
+/* ปุ่มเพิ่มในตะกร้า */
+.menu-item button.enter-btn {
+  display: block;
+  margin: 2rem auto 15px;
   padding: 8px 14px;
-  margin-top: 10px;
+  background: #00a86b;
+  color: #fff;
+  text-align: center;
+  transition: background 0.3s;
 }
 
-.enter-btn:hover, .add-btn:hover {
+.menu-item button.enter-btn:hover {
   background: #008b5a;
 }
 
+/* ===================== Sidebar ตะกร้าสินค้า ===================== */
 .cart-sidebar {
   position: fixed;
   top: 0;
-  right: -330px;
+  right: -330px; /* เริ่มซ่อน */
   width: 300px;
   height: 100%;
-  background: white;
+  background: #fff;
   box-shadow: -3px 0 10px rgba(0,0,0,0.2);
   padding: 20px;
+  padding-top: 80px;
   overflow-y: auto;
   transition: right 0.4s ease;
+  display: flex;
+  flex-direction: column;
   z-index: 999;
 }
 
-.cart-sidebar.active {
-  right: 0;
+.cart-sidebar.active { right: 0; }
+
+/* หัวตะกร้า */
+.cart-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
+.back-btn {
+  background: #00a86b;
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 18px;
+  transition: background 0.3s;
+}
+
+.back-btn:hover { background: #008b5a; }
+
+.cart-header h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  flex-grow: 1;
+}
+
+/* รายการสินค้า */
 .cart-item {
   background: #f6f6f6;
   margin: 8px 0;
@@ -174,71 +241,33 @@ button {
   padding: 10px;
 }
 
-.back-btn {
-  background: #444;
-  color: white;
-  border-radius: 10px;
-  padding: 10px 10px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-}
-
-.back-btn:hover {
-  background: #333;
-}
-
-.back-btn:active {
-  transform: none;
-}
-
+/* ===================== ปุ่ม Sidebar ===================== */
 .checkout-btn,
-.status-btn,
-.clear-btn {
+.clear-btn,
+.status-btn {
   display: block;
   width: 100%;
   margin-top: 10px;
-  padding: 10px 0;
-  border-radius: 10px;
+  padding: 12px 0;
+  border-radius: 12px;
   font-size: 1rem;
-  cursor: pointer;
   font-weight: 600;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
 
-.checkout-btn {
-  background: #00a86b;
-  color: white;
-  box-shadow: 0 3px 6px rgba(0, 168, 107, 0.3);
-}
+.checkout-btn { background: #00a86b; color: #ecf0f1; }
+.checkout-btn:hover { background: #008b5a; box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
 
-.checkout-btn:hover {
-  background: #008b5a;
-}
+.clear-btn { background: #e0e0e0; color: #313131; }
+.clear-btn:hover { background: #d5d5d5; box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
 
-.status-btn {
-  background: #007bff;
-  color: white;
-  box-shadow: 0 3px 6px rgba(0, 123, 255, 0.3);
-}
+.status-btn { background: #818c8d; color: #fff; }
+.status-btn:hover { background: #7d8586; box-shadow: 0 6px 12px rgba(0,0,0,0.12); }
+.status-btn.hidden { display: none; }
 
-.status-btn:hover {
-  background: #0056b3;
-}
-
-.clear-btn {
-  background: #dc3545;
-  color: white;
-  box-shadow: 0 3px 6px rgba(220, 53, 69, 0.3);
-}
-
-.clear-btn:hover { 
-  background: #b02a37;
-}
-
+/* ===================== ป๊อปอัพสถานะ ===================== */
 .status-modal {
   position: fixed;
   top: 0; left: 0;
@@ -251,111 +280,85 @@ button {
 }
 
 .status-box {
-  background: white;
-  padding: 30px;
+  background: #fff;
+  padding: 30px 100px;
   border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   animation: pop 0.4s ease;
 }
 
-@keyframes pop {
-  0% { transform: scale(0.8); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-.status-modal .status-box button {
+.status-box button {
   margin-top: 15px;
   background: #00a86b;
-  color: white;
-  border-radius: 6px;
-  padding: 6px 12px;
-  cursor: pointer;
-}
-
-.status-modal .status-box button:hover {
-  background: #008b5a;
-}
-
-.staff-btn {
-  background: #00a86b;
   color: #fff;
-  padding: 8px 14px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: 0.3s;
+  padding: 6px 12px;
+  border-radius: 6px;
 }
 
-.staff-btn:hover {
-  background: #008b5a;
-}
-
-.cart-count.pop {
-  transform: scale(1.5);
-  transition: transform 0.2s;
-}
-
+/* ===================== POPUP สั่งซื้อสำเร็จ ===================== */
 .success-popup {
   position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fadeIn 0.4s ease;
-  z-index: 2000;
+  z-index: 9999;
 }
 
 .popup-box {
   background: #fff;
-  padding: 30px 50px;
-  border-radius: 20px;
+  padding: 30px 100px;
+  border-radius: 10px;
   text-align: center;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-  animation: slideUp 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .popup-box h2 {
-  color: #00a86b; margin: 20px 0; font-size: 22px;
+  margin: 15px 0;
+  font-size: 1.5rem;
+  color: #1e1e1e;
 }
 
 .popup-box button {
+  margin-top: 20px;
+  padding: 8px 16px;
   background: #00a86b;
-  color: white;
-  border-radius: 10px;
-  padding: 10px 30px;
-  font-size: 16px;
-  cursor: pointer;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1rem;
 }
 
-.popup-box button:hover {
-  background: #008f5f;
+.checkmark {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
 }
 
-.checkmark { width: 80px; height: 80px; margin: 0 auto; }
 .checkmark-circle {
   stroke: #00a86b;
-  stroke-width: 3;
-  stroke-dasharray: 166;
-  stroke-dashoffset: 166;
-  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  stroke-width: 4;
+  stroke-miterlimit: 10;
+  fill: none;
 }
+
 .checkmark-check {
-  transform-origin: 50% 50%;
   stroke: #00a86b;
-  stroke-width: 3;
+  stroke-width: 4;
   stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
   stroke-dasharray: 48;
   stroke-dashoffset: 48;
-  animation: stroke 0.3s 0.6s ease forwards;
+  animation: draw 0.5s ease forwards 0.5s;
 }
 
-@keyframes stroke { 100% { stroke-dashoffset: 0; } }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes pop { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 
-/* ===== Footer ===== */
+/* ===================== Footer ===================== */
 .site-footer {
   background-color: #1e1e1e;
   color: #fff;
@@ -363,105 +366,51 @@ button {
   font-family: "Poppins", sans-serif;
 }
 
-/* จัด layout ภายใน footer */
 .footer-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 30px;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
 }
 
-/* ส่วนต่างๆใน footer */
-.footer-about,
-.footer-links,
-.footer-contact {
-  flex: 1 1 250px; /* ขยายตามขนาดหน้าจอ */
+.footer-about, .footer-links, .footer-contact {
+  flex: 1 1 250px;
 }
 
-/* โลโก้ใน footer */
-.footer-logo-img {
-  width: 150px;
-  margin-bottom: 15px;
-}
+.footer-logo-img { width: 150px; margin-bottom: 15px; }
 
-/* หัวข้อใน footer */
-.footer-links h3,
-.footer-contact h3 {
-  margin-bottom: 15px;
-  font-size: 16px;
-  color: #ffffff;
-}
-
-/* รายการลิงก์ */
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-links li {
-  margin-bottom: 10px;
-}
-
-.footer-links a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.footer-links a:hover {
-  color: #00a86b;
-}
-
-/* ข้อมูลติดต่อ */
-.footer-contact p {
-  margin: 5px 0;
-}
-
-.footer-links h3,
-.footer-contact h3 {
+.footer-links h3, .footer-contact h3 {
   position: relative;
   display: inline-block;
   padding-bottom: 4px;
+  margin-bottom: 15px;
+  font-size: 16px;
 }
 
-.footer-links h3::after,
-.footer-contact h3::after {
+.footer-links h3::after, .footer-contact h3::after {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 3px;       /* ความหนาเส้น */
-  background: #00a86b;  /* สีเส้นใต้ เปลี่ยนได้ */
+  left: 0; bottom: 0;
+  width: 100%; height: 3px;
+  background: #00a86b;
   border-radius: 5px;
 }
 
-/* ไอคอนโซเชียล */
-.social-icons {
-  display: flex;
-  gap: 15px;
-  margin-top: 10px;
-}
+.footer-links ul { list-style: none; padding: 0; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a { color: #fff; transition: color 0.3s; }
+.footer-links a:hover { color: #00a86b; }
 
-.social-icons a {
-  text-decoration: none;
-  color: inherit;
-  display: inline-block;
-}
-
+.social-icons { display: flex; gap: 15px; margin-top: 10px; }
 .social-icons a img {
   width: 24px;
   transition: transform 0.3s;
-  filter: grayscale(100%) brightness(0) invert(100%); /* ปรับสีพื้นฐาน */
+  filter: grayscale(100%) brightness(0) invert(100%);
 }
+.social-icons a:hover img { transform: scale(1.2); }
 
-.social-icons a:hover img {
-  transform: scale(1.2); /* ขยายไอคอนเมื่อ hover */
-}
-
-/* ส่วนล่างสุด footer */
 .footer-bottom {
   text-align: center;
   margin-top: 30px;

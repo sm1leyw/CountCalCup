@@ -1,157 +1,163 @@
-/* ===== พื้นฐานของหน้า ===== */
+/* ===== CSS Reset & พื้นฐาน Global ===== */
+* {
+  margin: 0;               /* ลบค่า margin เริ่มต้นของทุก element */
+  padding: 0;              /* ลบค่า padding เริ่มต้นของทุก element */
+  box-sizing: border-box;  /* รวม padding + border เข้าใน width/height */
+}
+
 body {
-  margin: 0; /* ลบค่า margin เริ่มต้นของ browser */
-  font-family: "Poppins", sans-serif; /* ใช้ฟอนต์ Poppins */
-  background: #eeeeee; /* พื้นหลังสีเทาอ่อน */
+  font-family: "Prompt", sans-serif; /* ฟอนต์หลักของเว็บไซต์ */
+  background-color: #eeeeee;         /* สีพื้นหลังหลัก */
+  color: #1e1e1e;                    /* สีข้อความหลัก */
+  line-height: 1.6;                  /* ระยะห่างบรรทัด */
 }
 
-/* ซ่อน element ที่ต้องการซ่อน */
+/* ===== ลิงก์ & Utility ===== */
+a {
+  text-decoration: none;  /* ลิงก์ไม่มีเส้นใต้ */
+  color: inherit;         /* ใช้สีเหมือน parent */
+}
+
 .hidden {
-  display: none;
+  display: none;          /* utility สำหรับซ่อน element */
 }
 
-/* ===== Header ===== */
-header {
-  background: #1e1e1e; /* พื้นหลังสีเข้ม */
-  display: flex; /* จัดเรียง logo และปุ่มด้านขวาเป็นแนวนอน */
-  justify-content: space-between; /* เว้นระยะห่างระหว่างสองฝั่ง */
-  align-items: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
-  padding: 30px 30px; /* ระยะขอบภายใน header */
+/* ===== CSS Variables ===== */
+:root {
+  --primary-green: #00c07f;       /* สีเขียวหลัก */
+  --primary-green-hover: #009e68; /* สีเขียวเมื่อ hover */
+  --nav-bg: #1e1e1e;              /* สีพื้นหลัง navbar */
+  --text-white: #ffffff;          /* สีขาวทั่วไป */
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  background-color: var(--nav-bg);   /* พื้นหลัง navbar */
+  padding: 1rem 5%;                  /* ระยะขอบด้านบน/ล่างและซ้าย/ขวา */
+  display: flex;                     /* จัด layout เป็น flex */
+  justify-content: space-between;    /* เว้นช่องว่างระหว่าง items */
+  align-items: center;               /* จัดกึ่งกลางแนวตั้ง */
+  position: sticky;                  /* ติด navbar ขณะ scroll */
+  top: 0;                             /* ติดบนสุดของหน้า */
+  z-index: 1000;                     /* อยู่เหนือ content อื่น */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* เงาเล็ก */
 }
 
 /* โลโก้ */
 .logo {
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.5rem;
+  font-weight: bold;                 /* ตัวอักษรหนา */
+  font-size: 1.5rem;                /* ขนาดตัวอักษร */
 }
 
-/* ขนาดและการจัดวางรูปภาพโลโก้ */
 .logo img {
-  width: 70px;
-  height: auto;
-  display: block;
-}
-
-/* ลิงก์ในโลโก้ */
-.logo a {
-  text-decoration: none;
-  color: #ffffff; /* สีข้อความขาว */
+  width: 70px;                       /* ความกว้างโลโก้ */
+  height: auto;                      /* ความสูงปรับตามอัตราส่วน */
+  display: block;                     /* ป้องกัน spacing บน/ล่าง */
 }
 
 .logo a:hover {
-  color: #dddddd; /* เปลี่ยนสีเมื่อ hover */
-  transform: scale(2); /* ขยายโลโก้เมื่อ hover */
+  color: #dddddd;                     /* สีเมื่อ hover */
+  transform: scale(1.2);             /* ขยายโลโก้เมื่อ hover */
+  transition: 0.3s;                  /* animation นุ่มนวล */
 }
 
-/* ===== ไอคอนตะกร้าสินค้า ===== */
-.cart-icon {
-  position: relative;
-  margin-left: 75%; /* เว้นระยะจากซ้าย */
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #ffffff;
+/* ปุ่ม Navbar */
+.desktop-auth-buttons {
+  display: flex;                     /* จัดเรียงปุ่มแนวนอน */
+  gap: 10px;                          /* ระยะห่างระหว่างปุ่ม */
 }
 
-/* จำนวนสินค้าในตะกร้า */
-.cart-count {
-  position: absolute;
-  top: -8px;
-  right: -10px;
-  background: red;
-  color: rgb(255, 255, 255);
-  border-radius: 50%; /* ทำให้เป็นวงกลม */
-  width: 18px;
-  height: 18px;
-  font-size: 0.8rem;
-  text-align: center;
-  line-height: 18px; /* จัดข้อความให้อยู่กลางวงกลม */
-  display: none; /* เริ่มต้นไม่แสดง */
+/* ===== ปุ่ม (Button) ===== */
+.btn {
+  padding: 8px 20px;                  /* ระยะขอบภายในปุ่ม */
+  border-radius: 50px;                /* ปุ่มโค้งมน */
+  font-size: 0.9rem;
+  cursor: pointer;                     /* เปลี่ยน cursor เมื่อ hover */
+  border: none;                        /* ลบ border default */
+  font-family: "Prompt", sans-serif;
+  transition: 0.3s;                   /* animation นุ่มนวล */
+}
+
+/* ปุ่มหลัก (Primary) */
+.btn-primary {
+  background-color: var(--primary-green);
+  color: var(--text-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-green-hover);
+  transform: translateY(-2px);        /* ยกขึ้นเล็กน้อย */
+  box-shadow: 0 4px 12px rgba(0,192,127,0.4); /* เงา */
+}
+
+/* ปุ่มแบบมีขอบ (Outline) */
+.btn-outline {
+  background-color: var(--primary-green);
+  color: var(--text-white);
+  border: 1px solid var(--primary-green);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-green-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,192,127,0.4);
 }
 
 /* ===== Hero Section ===== */
 .hero {
   position: relative;
   width: 100%;
-  height: 50vh; /* ความสูงครึ่งจอ */
+  height: 90vh;                     /* ความสูงเกือบเต็ม viewport */
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #ffffff;
+  color: var(--text-white);
   overflow: hidden;
-  background-color: #000; /* สีพื้นหลังสำรอง */
+  background-color: #000;           /* สีพื้นหลังสำรอง */
 }
 
-/* วิดีโอพื้นหลัง */
+/* วิดีโอพื้นหลัง hero */
 .hero-video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; 
-  object-fit: cover; /* ครอบคลุมพื้นที่โดยไม่บิดรูป */
-  z-index: 0;
-  filter: brightness(60%); /* ลดความสว่างเพื่อให้ข้อความมองเห็นง่าย */
+  height: 100%;
+  object-fit: cover;                 /* ครอบคลุมพื้นที่ */
+  z-index: 0;                        /* อยู่ด้านหลัง */
+  filter: brightness(60%);           /* ลดความสว่างเพื่อ readability */
 }
 
-/* เนื้อหาใน hero */
+/* เนื้อหา hero */
 .hero-content {
   position: relative;
-  z-index: 1; /* อยู่ด้านหน้าวิดีโอ */
-  text-shadow: 0px 0px 7px rgb(0, 0, 0); /* เพิ่มเงาให้ข้อความอ่านง่าย */
+  z-index: 1;                        /* อยู่ด้านหน้าวิดีโอ */
+  text-shadow: 0 0 7px rgba(0,0,0,0.7);
 }
 
 .hero-content h1 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 10px;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
 }
 
 .hero-content p {
-  font-size: 1.1rem;
-  opacity: 0.9; /* ลดความเข้มของข้อความรอง */
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  font-weight: 300;
+  opacity: 0.9;
 }
 
-/* ===== Menu Section ===== */
+/* ===== Menu / Zones Section ===== */
 .menu-container {
   padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* กริดร้านอาหาร */
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px; /* เว้นระยะระหว่าง item */
-  max-width: 1000px;
-  justify-items: center;
-}
-
-/* การ์ดร้านอาหาร */
-.menu-item {
-  width: 200px;
-  background: white;
-  padding: 20px;
-  text-align: center;
-  border-radius: 16px; /* มุมโค้ง */
-  box-shadow: 0 0px 8px rgba(0,0,0,0.4); /* เงาเล็กน้อย */
-}
-
-.menu-item img {
-  width: 150px;
-  height: 100px;
-  border-radius: 10px;
-  border: solid 4px #00a86b;
-}
-.menu-item :hover {
-  transform: scale(1.05); /* ขยายเมื่อ hover */
-  transition: transform 0.3s;
 }
 
 /* ชื่อชั้นอาหาร */
@@ -159,101 +165,131 @@ header {
   font-size: 28px;
   font-weight: 700;
   color: #333;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  letter-spacing: 1px;
+  margin: 20px 0 10px 0;
   position: relative;
 }
 
-/* เส้นใต้ชื่อชั้น */
 .food-floor-title::after {
   content: "";
   display: block;
   width: 160px;
   height: 5px;
-  background: #00a86b; /* สีเขียว */
-  margin: 10px auto 0;
+  background: var(--primary-green);
+  margin: 10px auto 0 auto;
   border-radius: 2px;
 }
 
-/* ===== ปุ่ม ===== */
-button {
-  cursor: pointer;
-  border: none;
-  background: #00a86b;
-  color: rgb(255, 255, 255);
-  padding: 8px 15px;
-  margin-top: 10px;
-  border-radius: 7px;
+/* Zones Grid */
+.zones {
+  width: 100%;
+  padding: 40px 0;
 }
 
-button a {
-  text-decoration: none; /* ลิงก์ในปุ่มไม่มีเส้นขีด */
+.zone-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* responsive */
+  gap: 2rem;
 }
 
-.enter-btn {
-  color: white;
-}
-
-button:hover {
-  background: #008b5a; /* เปลี่ยนสีเมื่อ hover */
-}
-
-/* ปุ่มเข้าสู่ระบบ */
-.staff-btn {
-  background: #00a86b;
-  color: #fff;
-  padding: 8px 14px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 0.95rem;
+.zone-card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
   transition: 0.3s;
+  cursor: pointer;
 }
 
-.staff-btn:hover {
-  background: #008b5a;
+.zone-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.zone-img {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s;
+}
+
+.zone-card:hover .zone-img {
+  transform: scale(1.05);
+}
+
+.zone-info {
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.zone-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.view-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--primary-green);
+  font-weight: 600;
+  transition: 0.2s;
+  margin-top: 1rem;
+}
+
+.view-btn:hover {
+  gap: 10px;
 }
 
 /* ===== Footer ===== */
 .site-footer {
-  background-color: #1e1e1e;
-  color: #fff;
+  background-color: var(--nav-bg);
+  color: var(--text-white);
   padding: 40px 20px 20px;
   font-family: "Poppins", sans-serif;
 }
 
-/* จัด layout ภายใน footer */
 .footer-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 30px;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
 }
 
-/* ส่วนต่างๆใน footer */
 .footer-about,
 .footer-links,
 .footer-contact {
-  flex: 1 1 250px; /* ขยายตามขนาดหน้าจอ */
+  flex: 1 1 250px; /* responsive */
 }
 
-/* โลโก้ใน footer */
 .footer-logo-img {
   width: 150px;
   margin-bottom: 15px;
 }
 
-/* หัวข้อใน footer */
 .footer-links h3,
 .footer-contact h3 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
   margin-bottom: 15px;
   font-size: 16px;
-  color: #ffffff;
 }
 
-/* รายการลิงก์ */
+.footer-links h3::after,
+.footer-contact h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--primary-green);
+  border-radius: 5px;
+}
+
 .footer-links ul {
   list-style: none;
   padding: 0;
@@ -265,66 +301,37 @@ button:hover {
 
 .footer-links a {
   color: #fff;
-  text-decoration: none;
   transition: color 0.3s;
 }
 
 .footer-links a:hover {
-  color: #00a86b;
+  color: var(--primary-green);
 }
 
-/* ข้อมูลติดต่อ */
 .footer-contact p {
   margin: 5px 0;
 }
 
-.footer-links h3,
-.footer-contact h3 {
-  position: relative;
-  display: inline-block;
-  padding-bottom: 4px;
-}
-
-.footer-links h3::after,
-.footer-contact h3::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 3px;       /* ความหนาเส้น */
-  background: #00a86b;  /* สีเส้นใต้ เปลี่ยนได้ */
-  border-radius: 5px;
-}
-
-/* ไอคอนโซเชียล */
 .social-icons {
   display: flex;
   gap: 15px;
   margin-top: 10px;
 }
 
-.social-icons a {
-  text-decoration: none;
-  color: inherit;
-  display: inline-block;
-}
-
 .social-icons a img {
   width: 24px;
   transition: transform 0.3s;
-  filter: grayscale(100%) brightness(0) invert(100%); /* ปรับสีพื้นฐาน */
+  filter: grayscale(100%) brightness(0) invert(100%);
 }
 
 .social-icons a:hover img {
-  transform: scale(1.2); /* ขยายไอคอนเมื่อ hover */
+  transform: scale(1.2);
 }
 
-/* ส่วนล่างสุด footer */
 .footer-bottom {
   text-align: center;
   margin-top: 30px;
-  border-top: 2px solid #00a86b;
+  border-top: 2px solid var(--primary-green);
   padding-top: 15px;
   font-size: 14px;
   color: #aaa;

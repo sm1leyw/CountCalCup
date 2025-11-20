@@ -3,16 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- โหลดฟอนต์จาก Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  
   <title>เข้าสู่ระบบพ่อครัว</title>
-  <!-- เชื่อมไฟล์ CSS สำหรับหน้า login backend -->
+
+  <!-- เชื่อมต่อฟอนต์จาก Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- เชื่อมไฟล์ CSS สำหรับหน้า login ลูกค้า -->
   <link rel="stylesheet" href="loginbackend.css">
 </head>
 <body>
 
-  <!-- ===== ส่วน login container ===== -->
+  <video autoplay muted loop id="bg-video">
+    <source src="video/insert2.mp4" type="video/mp4">
+  </video>
+
+  <!-- ===== กล่อง login container ===== -->
   <div class="login-container">
     <h2>เข้าสู่ระบบพ่อครัว</h2> <!-- หัวข้อหน้า -->
 
@@ -31,7 +38,7 @@
         <input type="password" id="password" name="password" placeholder="กรอกรหัสผ่าน" required>
       </div>
 
-      <!-- ปุ่มส่งฟอร์ม -->
+      <!-- ปุ่ม submit -->
       <button type="submit">เข้าสู่ระบบ</button>
     </form>
 
@@ -40,7 +47,7 @@
     <button class="back-btn" onclick="window.location.href='preview.html'">กลับหน้าหลัก</button>
   </div>
 
-  <!-- เชื่อมไฟล์ JavaScript สำหรับฟอร์ม login -->
-  <script src="loginbackend.js"></script>
+  <!-- เชื่อมไฟล์ JavaScript สำหรับ login ลูกค้า -->
+  <script src="loginuser.js"></script>
 </body>
 </html>

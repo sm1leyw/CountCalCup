@@ -31,3 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+// เปิด pop-up ทันทีเมื่อโหลดเว็บ
+window.addEventListener("load", () => {
+    document.getElementById("tributePopup").classList.remove("hidden");
+});
+
+// ปิด pop-up
+document.getElementById("closePopup").addEventListener("click", () => {
+    document.getElementById("tributePopup").classList.add("hidden");
+});

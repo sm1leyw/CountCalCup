@@ -1,8 +1,8 @@
 /* ===== พื้นฐานของหน้า ===== */
 body {
-  font-family: "Poppins", sans-serif; /* ฟอนต์หลัก */
+  font-family: "Prompt", sans-serif; /* ฟอนต์หลักของเว็บไซต์ */
   margin: 0; /* ลบ margin เริ่มต้น */
-  background: #f6fdf8; /* สีพื้นหลังอ่อน */
+  background: #eeeeee; /* สีพื้นหลังอ่อน */
   color: #333; /* สีข้อความหลัก */
 }
 
