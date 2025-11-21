@@ -92,3 +92,31 @@ button {
 button:hover {
   background: #008b5a; /* เปลี่ยนสีปุ่มเมื่อ hover */
 }
+
+/* กล่องครอบ input เพื่อให้เราวางไอคอนซ้อนลงไปได้ */
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+/* ปรับช่อง input ให้เว้นที่ว่างด้านขวาไม่ให้ข้อความทับไอคอน */
+.password-container input {
+    width: 100%;
+    padding-right: 40px; /* เว้นที่ด้านขวา */
+    box-sizing: border-box; /* สำคัญ! เพื่อไม่ให้ขนาด input ล้น */
+}
+
+/* จัดตำแหน่งไอคอนลูกตา */
+.toggle-password {
+    position: absolute;
+    right: 15px; /* ห่างจากขวา 15px */
+    top: 50%;
+    transform: translateY(-50%); /* จัดกึ่งกลางแนวตั้ง */
+    cursor: pointer;
+    color: #666; /* สีไอคอน */
+    font-size: 1.2rem;
+}
+
+.toggle-password:hover {
+    color: #333; /* เปลี่ยนสีเข้มขึ้นเมื่อเอาเมาส์ชี้ */
+}

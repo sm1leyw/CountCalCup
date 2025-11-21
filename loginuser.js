@@ -77,3 +77,19 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
         alert("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
     }
 });
+
+// ฟังก์ชันสำหรับกดปุ่มลูกตา เปิด/ปิด รหัสผ่าน
+function togglePassword(inputId, icon) {
+    const inputField = document.getElementById(inputId);
+    
+    // เช็คว่าตอนนี้เป็นแบบ password (จุดๆๆ) หรือ text (เห็นตัวเลข)
+    if (inputField.type === "password") {
+        inputField.type = "text"; // เปลี่ยนให้มองเห็น
+        icon.classList.remove("fa-eye"); // เอารูปลูกตาปกติออก
+        icon.classList.add("fa-eye-slash"); // ใส่รูปลูกตาที่มีขีดฆ่า
+    } else {
+        inputField.type = "password"; // เปลี่ยนกลับเป็นจุดๆๆ
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+    }
+}
