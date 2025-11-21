@@ -114,7 +114,7 @@ window.handleSave = function(index) {
 };
 
 // ==============================================
-// 3. ฟังก์ชันแสดง History Log ใน Sidebar
+// 3. แก้ไขฟังก์ชันแสดง History Log (เพิ่มปุ่ม Restore)
 // ==============================================
 function renderHistory() {
     const historyLog = JSON.parse(localStorage.getItem("orderHistory")) || [];
@@ -125,11 +125,14 @@ function renderHistory() {
         return;
     }
 
-    // เรียงจากใหม่ไปเก่า
-    historyLog.slice().reverse().forEach(order => {
+    // วนลูปแสดงผล (Reverse เพื่อให้ของใหม่สุดอยู่บน)
+    historyLog.slice().reverse().forEach((order, index) => {
+        // ★ คำนวณ index จริง (สำคัญมาก เพื่อให้ดึงข้อมูลถูกตัว) ★
+        const realIndex = historyLog.length - 1 - index;
+
         const item = document.createElement("div");
         
-        // กำหนดสีแถบข้างตามสถานะ
+        // กำหนดสีแถบข้าง
         let statusClass = "";
         if (order.status === "เสร็จแล้ว") statusClass = "status-done";
         else if (order.status === "จัดส่งแล้ว") statusClass = "status-sent";
@@ -137,15 +140,23 @@ function renderHistory() {
 
         item.className = `history-item ${statusClass}`;
         
-        // สร้างรายการอาหารแบบย่อ
         let foodText = order.items.map(i => `${i.name}(${i.qty})`).join(", ");
 
+        // ★ เพิ่มปุ่ม Restore ด้านล่าง ★
         item.innerHTML = `
-            <h4>${order.id}</h4>
-            <p>${foodText}</p>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h4 style="margin:0;">${order.id}</h4>
+                <small style="color:#aaa;">${order.timestamp}</small>
+            </div>
+            <p style="margin-top:5px;">${foodText}</p>
             <p>ยอด: ${order.totalPrice} ฿</p>
-            <span class="status-text" style="color:#555;">สถานะ: ${order.status}</span>
-            <br><small style="color:#aaa;">${order.timestamp}</small>
+            <div style="margin-top:5px; font-weight:bold; font-size:0.9rem; color:#555;">
+                สถานะเดิม: ${order.status}
+            </div>
+
+            <button class="restore-btn" onclick="restoreOrder(${realIndex})">
+                ดึงกลับไปแก้ไข (Restore)
+            </button>
         `;
         historyList.appendChild(item);
     });
@@ -227,4 +238,46 @@ window.showStatusPopup = function(message) {
     setTimeout(() => {
         if(document.body.contains(div)) div.remove();
     }, 2000);
+};
+
+// ==============================================
+// ★ ฟังก์ชันใหม่: ดึงออเดอร์กลับไปหน้าหลัก ★
+// ==============================================
+window.restoreOrder = function(index) {
+    if(!confirm("ต้องการดึงออเดอร์นี้กลับไปแก้ไขใช่หรือไม่?")) return;
+
+    // 1. โหลดข้อมูลทั้ง 2 ถัง
+    let historyLog = JSON.parse(localStorage.getItem("orderHistory")) || [];
+    let shopOrders = JSON.parse(localStorage.getItem("shopOrders")) || [];
+
+    // 2. ดึงข้อมูลออเดอร์ที่จะกู้คืน
+    let orderToRestore = historyLog[index];
+
+    // 3. เปลี่ยนสถานะกลับเป็น "กำลังทำอาหาร" (เพื่อให้รู้ว่ากำลังแก้)
+    orderToRestore.status = "กำลังทำอาหาร"; 
+
+    // 4. ย้ายข้อมูล: ลบจาก history -> ใส่คืน shopOrders
+    historyLog.splice(index, 1);
+    shopOrders.push(orderToRestore); // ใส่ต่อท้าย active list
+
+    // 5. บันทึกข้อมูลลง LocalStorage
+    localStorage.setItem("orderHistory", JSON.stringify(historyLog));
+    localStorage.setItem("shopOrders", JSON.stringify(shopOrders));
+
+    // 6. อัปเดตฝั่งลูกค้า (status.html) ให้สถานะเปลี่ยนกลับด้วย
+    const currentOrder = JSON.parse(localStorage.getItem("currentOrder"));
+    if (currentOrder && currentOrder.id === orderToRestore.id) {
+        currentOrder.status = "กำลังทำอาหาร (แก้ไข)"; // แจ้งลูกค้าหน่อยว่ามีการแก้ไข
+        localStorage.setItem("currentOrder", JSON.stringify(currentOrder));
+    }
+
+    // 7. แจ้งเตือนและรีเฟรชหน้าจอ
+    showStatusPopup(`ดึงออเดอร์ ${orderToRestore.id} กลับเรียบร้อย!`);
+    
+    renderHistory(); // รีเฟรชหน้าประวัติ (ออเดอร์จะหายไป)
+    renderOrders();  // รีเฟรชหน้าหลัก (ออเดอร์จะโผล่มา)
+    
+    // (Option) ปิดหน้า History panel อัตโนมัติเพื่อให้เห็นออเดอร์ที่เด้งมา
+    document.getElementById("historyPanel").classList.remove("active");
+    document.getElementById("overlay").classList.remove("active");
 };

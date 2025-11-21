@@ -591,4 +591,28 @@ a {
     cursor: pointer;
 }
 
-/* ... (Popup CSS เดิมใช้ต่อได้เลย) ... */
+/* ปุ่มดึงกลับ (Restore) */
+.restore-btn {
+  background-color: #ffc107; /* สีเหลือง */
+  color: #333;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-top: 8px;
+  transition: 0.3s;
+  display: block; /* ให้ลงมาอยู่บรรทัดใหม่ */
+  width: 100%;
+}
+
+.restore-btn:hover {
+  background-color: #e0a800;
+}
+
+/* ไอคอนหมุนกลับ */
+.restore-btn::before {
+  content: "↺ "; /* หรือใช้ icon font-awesome ถ้ามี */
+  font-size: 1rem;
+}
