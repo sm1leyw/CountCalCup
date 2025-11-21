@@ -476,3 +476,119 @@ a {
   font-size: 14px;
   color: #aaa;
 }
+
+/* backend.css */
+
+/* ... (CSS เดิมส่วน body, header, main คงไว้) ... */
+
+/* ปรับปุ่มบน Header ให้เป็นสไตล์เดียวกัน */
+.icon-btn {
+  background: #00a86b;
+  border: 2px solid #00a86b;
+  border-radius: 50%; /* วงกลม */
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+.icon-btn:hover {
+  background: #008f5f;
+  transform: scale(1.05);
+}
+
+.profile-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* ===== Slide Panel (ใช้ร่วมกันทั้ง Profile และ History) ===== */
+.slide-panel {
+  position: fixed;
+  top: 0;
+  right: -400px; /* ซ่อนทางขวา */
+  width: 350px;
+  height: 100vh;
+  background: white;
+  box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  transition: right 0.4s ease;
+  z-index: 1000;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* ให้เลื่อนลงได้ถ้าประวัติเยอะ */
+}
+
+.slide-panel.active {
+  right: 0;
+}
+
+/* Overlay ฉากหลัง */
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ปุ่มปิด Panel */
+.close-btn {
+  align-self: flex-start;
+  background: #eee;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  width: 35px; height: 35px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.close-btn:hover { background: #ddd; }
+
+/* ===== สไตล์รายการใน History ===== */
+.history-item {
+    background: #f9f9f9;
+    border-left: 5px solid #ccc; /* แถบสีด้านซ้าย */
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+/* สีแถบตามสถานะใน History */
+.history-item.status-done { border-left-color: #00a86b; } /* เสร็จแล้ว - เขียว */
+.history-item.status-sent { border-left-color: #2196F3; } /* จัดส่งแล้ว - ฟ้า */
+.history-item.status-cancel { border-left-color: #f44336; } /* ยกเลิก - แดง */
+
+.history-item h4 { margin: 0 0 5px; font-size: 1rem; color: #333; }
+.history-item p { margin: 3px 0; font-size: 0.9rem; color: #666; }
+.history-item .status-text { font-weight: bold; font-size: 0.85rem; }
+
+.clear-history-btn {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* ... (Popup CSS เดิมใช้ต่อได้เลย) ... */
