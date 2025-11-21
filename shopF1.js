@@ -115,22 +115,45 @@ clearBtn.addEventListener("click", () => {
   updateCart();     // อัปเดตตะกร้า
 });
 
-/* ===================== สั่งซื้อ ===================== */
+/* ===================== สั่งซื้อ (แก้ไขใน shopF1.js) ===================== */
 checkoutBtn.addEventListener("click", () => {
   if (cart.length === 0) {
     alert("ยังไม่มีสินค้าในตะกร้า!");
     return;
   }
 
-  showSuccessPopup(); // แสดง popup สั่งซื้อสำเร็จ
+  // 1. สุ่มเลข Order ID
+  const randomId = Math.floor(1000 + Math.random() * 9000);
+  const orderId = "#ORD-" + randomId;
 
-  // เล่นเสียง ding
+  // 2. เตรียมข้อมูลออเดอร์
+  const orderData = {
+    id: orderId,
+    customerName: "User " + randomId, // สมมติชื่อลูกค้า
+    items: cart, // รายการอาหาร
+    totalPrice: document.getElementById("totalPrice").textContent,
+    status: "รอรับออเดอร์", // สถานะเริ่มต้น
+    timestamp: new Date().toLocaleString() // เวลาที่สั่ง
+  };
+
+  // 3. บันทึก "Current Order" (สำหรับให้ลูกค้าดูสถานะตัวเอง)
+  localStorage.setItem("currentOrder", JSON.stringify(orderData));
+
+  // ★★★ 4. บันทึกลง "รายการออเดอร์รวมของร้าน" (สำหรับ Backend) ★★★
+  let shopOrders = JSON.parse(localStorage.getItem("shopOrders")) || []; // ดึงรายการเก่ามา
+  shopOrders.push(orderData); // เพิ่มออเดอร์ใหม่เข้าไป
+  localStorage.setItem("shopOrders", JSON.stringify(shopOrders)); // บันทึกกลับ
+
+  // 5. แสดง Popup และย้ายหน้า
+  showSuccessPopup(); 
   if (dingSound && dingSound.src) dingSound.play();
 
-  cart = [];         // ลบสินค้าใน array
-  updateCart();      // อัปเดตตะกร้า
+  setTimeout(() => {
+      window.location.href = "status.html"; 
+  }, 1500);
 
-  checkStatusBtn.classList.remove("hidden"); // แสดงปุ่มตรวจสอบสถานะ
+  cart = [];
+  updateCart();
 });
 
 /* ===================== ฟังก์ชัน popup สั่งซื้อสำเร็จ ===================== */
@@ -154,24 +177,3 @@ function showSuccessPopup() {
   // ปุ่มตกลงปิด popup
   document.getElementById("okBtn").addEventListener("click", () => popup.remove());
 }
-
-/* ===================== ตรวจสอบสถานะ ===================== */
-checkStatusBtn.addEventListener("click", () => {
-  statusPopup.classList.remove("hidden"); // แสดง popup overlay
-  orderStatus.textContent = "กำลังทำอาหาร 🍳"; // ขั้นตอนแรก
-
-  // หลัง 5 วินาที เปลี่ยนสถานะเป็นจัดส่งแล้ว
-  setTimeout(() => {
-    orderStatus.textContent = "จัดส่งแล้ว 🚚";
-  }, 5000);
-
-  // หลัง 8 วินาที ปิด popup
-  setTimeout(() => {
-    statusPopup.classList.add("hidden");
-  }, 8000);
-});
-
-/* ===================== ปิด popup สถานะ ===================== */
-closeStatus.addEventListener("click", () => {
-  statusPopup.classList.add("hidden");
-});

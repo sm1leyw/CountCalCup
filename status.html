@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เช็คสถานะอาหาร</title>
-    <link rel="stylesheet" href="status.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>สถานะออเดอร์ - SHOP FLOOR 1</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="status.css"> 
 </head>
 <body>
-    <header>
-        <h1>สถานะอาหารของคุณ 🍛</h1>
-    </header>
 
-    <section class="order-status">
-        <div class="food-box">
-            <img src="image/cooking.png"  alt="กระเพราควาย">
-            <div class="food-info">
-                <h2>กระเพราเนื้อ - จานที่ 1</h2>
-                <p>สถานะ: <span class="status preparing">กำลังปรุง</span></p>
-                <p>หมายเลขออเดอร์: <strong>#A1021</strong></p>
-            </div>
+  <div class="status-container">
+    <div class="order-header">
+        <h1>ติดตามสถานะออเดอร์</h1>
+        <div id="displayOrderId" class="order-id">กำลังโหลดข้อมูล...</div>
+    </div>
+
+    <div class="status-wrapper">
+        <div id="displayStatus" class="status-badge">
+            ...
         </div>
+    </div>
 
-        <div class="food-box">
-            <img src="image/cooking.png"  alt="กระเพราควาย">
-            <div class="food-info">
-                <h2>กระเพราเนื้อ - จานที่ 2</h2>
-                <p>สถานะ: <span class="status delivered">จัดส่งแล้ว</span></p>
-                <p>หมายเลขออเดอร์: <strong>#A1022</strong></p>
+    <div class="order-summary">
+        <h3>สรุปรายการสั่งซื้อ</h3>
+        <div class="order-items-list" id="orderList">
             </div>
-        </div>
-    </section>
+    </div>
 
-    <footer>
-        <button id="checkStatusBtn" class="status-btn">เช็คสถานะอีกครั้ง 🔄</button>
-    </footer>
+    <div class="total-sum">
+        ราคารวมสุทธิ: <span id="displayTotalPrice">0</span> บาท
+    </div>
+
+    <a href="index.html" class="back-home-btn">กลับหน้าเมนูหลัก</a>
+  </div>
+
+  <script src="status.js"></script>
+
 </body>
 </html>
