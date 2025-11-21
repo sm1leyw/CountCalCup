@@ -63,7 +63,7 @@
         display: block;
         width: 60px;
         height: 4px;
-        background: #fff;
+        background: #00c07f;
         margin: 8px auto 0;
         border-radius: 2px;
     }
@@ -132,8 +132,8 @@
         width: 100%;
         padding: 12px;
         margin-top: 10px;
-        background: #fff; /* ปุ่มสีขาว */
-        color: #333; /* ตัวหนังสือเข้ม */
+        background: #00c07f; /* ปุ่มสีขาว */
+        color: white; /* ตัวหนังสือเข้ม */
         border: none;
         border-radius: 30px;
         font-size: 16px;
@@ -144,7 +144,7 @@
     }
 
     button[type="submit"]:hover {
-        background: #f0f0f0;
+        background: #009e68;
         transform: translateY(-2px);
         box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     }
@@ -159,7 +159,7 @@
     .toggle-btn {
         background: none;
         border: none;
-        color: #fff;
+        color: #00c07f;
         font-weight: 600;
         cursor: pointer;
         text-decoration: none;
@@ -169,8 +169,8 @@
     }
 
     .toggle-btn:hover {
-        color: #ffd700; /* สีทองเวลาชี้ */
-        border-bottom-color: #ffd700;
+        color: #009e68; /* สีเวลาชี้ */
+        border-bottom-color: #009e68;
     }
 
     /* ปุ่มกลับหน้าหลัก */
