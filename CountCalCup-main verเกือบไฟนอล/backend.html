@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backend Kitchen</title>
+
+  <!-- เชื่อมต่อฟอนต์จาก Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- เชื่อม CSS ภายนอก -->
+  <link rel="stylesheet" href="css/backend.css">
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <!-- โลโก้ -->
+    <div class="logo">Backend Kitchen</div>
+
+    <!-- Navigation / เมนูด้านขวา -->
+    <nav>
+      <!-- ปุ่มโปรไฟล์ -->
+      <button id="profileBtn" class="profile-btn">
+        <img src="image/user.png" alt="ไอคอนโปรไฟล์">
+      </button>
+    </nav>
+  </header>
+
+  <!-- ===== Main Content ===== -->
+  <main>
+    <h1>Order list</h1> <!-- หัวข้อหลักหน้า Backend Kitchen -->
+
+    <!-- รายการออเดอร์ -->
+    <div id="orderList" class="order-grid">
+
+      <!-- ตัวอย่างกล่องออเดอร์ -->
+      <div class="order-box">
+        <img src="image/smoothie.png" alt="น้ำปั่น"> <!-- รูปสินค้า -->
+
+        <div class="order-info">
+          <h3>น้ำปั่น</h3> <!-- ชื่อสินค้า -->
+          <p>จำนวน 1 เเก้ว</p> <!-- จำนวนสินค้า -->
+
+          <!-- เลือกสถานะออเดอร์ -->
+          <select>
+            <option>รอรับออเดอร์</option>
+            <option>กำลังทำอาหาร</option>
+            <option>เสร็จแล้ว</option>
+            <option>จัดส่งแล้ว</option>
+            <option>วัตถุดิบหมด</option>
+          </select>
+
+          <!-- ปุ่มยืนยันสถานะ -->
+          <button class="submit-btn">ยืนยันสถานะ</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== โปรไฟล์แถบข้าง ===== -->
+  <div id="profilePanel" class="profile-panel">
+    <!-- ปุ่มปิดแถบโปรไฟล์ -->
+    <button id="closeProfile" class="close-btn">←</button>
+
+    <div class="profile-content">
+      <img src="image/user.png" alt="โปรไฟล์เจ้าของร้าน" class="profile-img"> <!-- รูปโปรไฟล์ -->
+      <h2>เจ้าของร้าน <br>นายxxx</h2> <!-- ชื่อเจ้าของร้าน -->
+      <p>Username <strong>admin_xxxx</strong></p> <!-- ชื่อผู้ใช้ -->
+
+      <!-- ปุ่ม Log out -->
+      <button id="logoutBtn" class="logout-btn">
+        <a href="index.html">Log out</a>
+      </button>
+    </div>
+  </div>
+
+  <!-- Overlay ด้านหลังโปรไฟล์ -->
+  <div id="profileOverlay" class="profile-overlay"></div>
+
+    <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <!-- ส่วนเกี่ยวกับเว็บไซต์ -->
+      <div class="footer-about">
+        <img src="image/Count Cal Cup.png" alt="Count Cal Cup" class="footer-logo-img">
+        <p>เว็บไซต์ของเราให้บริการอาหารและเมนูต่าง ๆ <br>ครบวงจรพร้อมโปรโมชั่นพิเศษทุกสัปดาห์</p>
+        <p>มุ่งมั่นให้คุณได้รับประสบการณ์ที่ดีที่สุดในการ <br>เลือกเมนูอาหาร</p>
+      </div>
+
+      <!-- ลิงก์ด่วน -->
+      <div class="footer-links">
+        <h3>ลิงก์ด่วน</h3>
+        <ul>
+          <li><a href="preview.html">หน้าแรก</a></li>
+          <li><a href="#">เมนู</a></li>
+          <li><a href="#">เกี่ยวกับเรา</a></li>
+        </ul>
+      </div>
+
+      <!-- ข้อมูลติดต่อ -->
+      <div class="footer-contact">
+        <h3>ติดต่อเรา</h3>
+        <div class="social-icons">
+          <a href="#"><img src="image/discord.png" alt="Discord"></a>
+          <a href="#"><img src="image/youtube.png" alt="YouTube"></a>
+          <a href="#"><img src="image/tik-tok.png" alt="TikTok"></a>
+          <a href="#"><img src="image/facebook.png" alt="TikTok"></a>
+          <a href="#"><img src="image/instagram.png" alt="TikTok"></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ส่วนล่างสุดของ footer -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Count Cal Cup.</p>
+    </div>
+  </footer>
+
+  <!-- เชื่อม JavaScript ภายนอก -->
+  <script src="js/backend.js"></script>
+</body>
+</html>

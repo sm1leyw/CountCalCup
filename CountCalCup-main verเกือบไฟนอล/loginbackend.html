@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เข้าสู่ระบบ / สมัครสมาชิก</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="css/loginbackend.css">
+  </style>
+</head>
+<body>
+
+  <video autoplay muted loop id="bg-video">
+    <source src="video/insert2.mp4" type="video/mp4">
+  </video>
+
+
+  <div class="login-container">
+
+    <div id="login-box">
+        <h2>เข้าสู่ระบบพ่อครัว</h2>
+        <form id="loginForm">
+          
+          <div class="form-group">
+            <label for="login-username">ชื่อผู้ใช้ (Username)</label>
+            <input type="text" id="login-username" placeholder="กรอกชื่อผู้ใช้" required>
+          </div>
+
+          <div class="form-group">
+            <label for="login-password">รหัสผ่าน (Password)</label>
+            <div class="password-container">
+                <input type="password" id="login-password" placeholder="กรอกรหัสผ่าน" required>
+                <i class="fa-solid fa-eye toggle-password" onclick="togglePassword('login-password', this)"></i>
+            </div>
+          </div>
+
+          <button type="submit">เข้าสู่ระบบ</button>
+        </form>
+        
+        <div style="text-align: center; margin-top: 15px;">
+            <span>ยังไม่มีบัญชี? </span>
+            <button class="toggle-btn" onclick="toggleForms()">สมัครสมาชิกที่นี่</button>
+        </div>
+        <br>
+        <button class="back-btn" onclick="window.location.href='preview.html'">กลับหน้าหลัก</button>
+    </div>
+
+    
+    <div id="register-box" class="hidden">
+        <h2>สมัครสมาชิกใหม่</h2>
+        <form id="registerForm">
+          
+          <div class="form-group">
+            <label for="reg-username">ตั้งชื่อผู้ใช้ (Username)</label>
+            <input type="text" id="reg-username" placeholder="ตั้งชื่อผู้ใช้ใหม่" required>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-password">ตั้งรหัสผ่าน (Password)</label>
+            <div class="password-container">
+                <input type="password" id="reg-password" placeholder="ตั้งรหัสผ่าน" required>
+                <i class="fa-solid fa-eye toggle-password" onclick="togglePassword('reg-password', this)"></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-confirm-password">ยืนยันรหัสผ่าน</label>
+            <div class="password-container">
+                <input type="password" id="reg-confirm-password" placeholder="ยืนยันรหัสผ่านอีกครั้ง" required>
+                <i class="fa-solid fa-eye toggle-password" onclick="togglePassword('reg-confirm-password', this)"></i>
+            </div>
+          </div>
+
+          <button type="submit" style="background-color: #28a745;">ยืนยันการสมัคร</button>
+        </form>
+
+        <div style="text-align: center; margin-top: 15px;">
+            <span>มีบัญชีแล้ว? </span>
+            <button class="toggle-btn" onclick="toggleForms()">กลับไปหน้าเข้าสู่ระบบ</button>
+        </div>
+    </div>
+
+    <br>
+
+  </div>
+
+  <script src="js/loginbackend.js"></script>
+</body>
+</html>
