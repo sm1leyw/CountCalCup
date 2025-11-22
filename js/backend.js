@@ -1,6 +1,4 @@
-/* backend.js */
-
-// จับ element ที่ต้องใช้
+// ประกาศ element ที่ต้องใช้
 const orderList = document.getElementById("orderList");
 const historyList = document.getElementById("historyList");
 
