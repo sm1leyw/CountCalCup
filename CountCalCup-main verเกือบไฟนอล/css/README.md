@@ -1,2 +1,0 @@
-# CountCalCup
-Project csi101
