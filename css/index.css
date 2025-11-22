@@ -1,198 +1,255 @@
-/* ===== CSS Reset & พื้นฐาน Global ===== */
+/* =========================================================
+   🔧 1) Reset & Global Styles
+   - ลบค่า default margin/padding
+   - ใช้ box-sizing: border-box
+   - ตั้งค่า font-family, สีพื้นฐาน และ line-height
+   ========================================================= */
+
+/* ลบ margin/padding เริ่มต้น และรวม border กับ padding ใน width/height */
 * {
-  margin: 0;               /* ลบค่า margin เริ่มต้นของทุก element */
-  padding: 0;              /* ลบค่า padding เริ่มต้นของทุก element */
-  box-sizing: border-box;  /* รวม padding + border เข้าใน width/height */
+  margin: 0;              /* ลบ margin เริ่มต้นทั้งหมด */
+  padding: 0;             /* ลบ padding เริ่มต้นทั้งหมด */
+  box-sizing: border-box; /* รวม padding + border ใน width/height */
 }
 
+/* ตั้งค่า body ของเว็บ */
 body {
   font-family: "Prompt", sans-serif; /* ฟอนต์หลักของเว็บไซต์ */
-  background-color: #eeeeee;         /* สีพื้นหลังหลัก */
-  color: #1e1e1e;                    /* สีข้อความหลัก */
+  background-color: #f9fafb;         /* สีพื้นหลังเว็บไซต์ */
+  color: #1e1e1e;                    /* สีตัวอักษรเริ่มต้น */
   line-height: 1.6;                  /* ระยะห่างบรรทัด */
 }
 
-/* ===== ลิงก์ & Utility ===== */
+/* ตั้งค่า anchor tag (ลิงก์) */
 a {
-  text-decoration: none;  /* ลิงก์ไม่มีเส้นใต้ */
-  color: inherit;         /* ใช้สีเหมือน parent */
+  text-decoration: none; /* เอาเส้นใต้ลิงก์ออก */
+  color: inherit;        /* ใช้สีตัวอักษรเดียวกับ parent */
 }
 
-.hidden {
-  display: none;          /* utility สำหรับซ่อน element */
-}
-
-/* ===== CSS Variables ===== */
+/* =========================================================
+   🎨 2) CSS Variables
+   - กำหนดสีหลักเพื่อใช้ซ้ำในเว็บ
+   - เปลี่ยนธีมง่าย
+   ========================================================= */
 :root {
-  --primary-green: #00c07f;       /* สีเขียวหลัก */
+  --primary-green: #00c07f;       /* สีเขียวหลักของเว็บ */
   --primary-green-hover: #009e68; /* สีเขียวเมื่อ hover */
   --nav-bg: #1e1e1e;              /* สีพื้นหลัง navbar */
-  --text-white: #ffffff;          /* สีขาวทั่วไป */
+  --text-white: #ffffff;           /* สีขาวทั่วไป */
 }
 
-/* ===== Navbar ===== */
+/* =========================================================
+   📌 3) Navbar Component
+   ========================================================= */
+
+/* ตัว navbar หลัก */
 .navbar {
-  background-color: var(--nav-bg);   /* พื้นหลัง navbar */
-  padding: 1rem 5%;                  /* ระยะขอบด้านบน/ล่างและซ้าย/ขวา */
-  display: flex;                     /* จัด layout เป็น flex */
-  justify-content: space-between;    /* เว้นช่องว่างระหว่าง items */
-  align-items: center;               /* จัดกึ่งกลางแนวตั้ง */
-  position: sticky;                  /* ติด navbar ขณะ scroll */
-  top: 0;                             /* ติดบนสุดของหน้า */
-  z-index: 1000;                     /* อยู่เหนือ content อื่น */
+  background-color: var(--nav-bg);   /* สีพื้นหลัง navbar */
+  padding: 1rem 5%;                  /* ระยะขอบด้านบน/ล่าง ซ้าย/ขวา */
+  display: flex;                      /* ใช้ Flexbox */
+  justify-content: space-between;     /* จัด spacing ซ้าย-ขวา */
+  align-items: center;                /* จัดกลางแนวตั้ง */
+  position: sticky;                   /* ติด navbar ขณะ scroll */
+  top: 0;                             /* ติดด้านบน */
+  z-index: 1000;                      /* อยู่เหนือ content อื่น */
   box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* เงาเล็ก */
 }
 
-/* โลโก้ */
+/* ----- Logo ----- */
 .logo {
-  font-weight: bold;                 /* ตัวอักษรหนา */
-  font-size: 1.5rem;                /* ขนาดตัวอักษร */
+  font-weight: bold;    /* ตัวหนา */
+  font-size: 1.5rem;    /* ขนาดฟอนต์ */
 }
 
 .logo img {
-  width: 70px;                       /* ความกว้างโลโก้ */
-  height: auto;                      /* ความสูงปรับตามอัตราส่วน */
-  display: block;                     /* ป้องกัน spacing บน/ล่าง */
+  width: 70px;          /* ความกว้างของโลโก้ */
+  height: auto;         /* ปรับความสูงอัตโนมัติ */
+  display: block;       /* block element */
 }
 
+/* ลิงก์ใน logo */
+.logo a {
+  text-decoration: none; /* เอาเส้นใต้ */
+  color: var(--text-white); /* ข้อความสีขาว */
+  transition: transform 0.3s, color 0.3s; /* animation smooth */
+}
+
+/* hover effect ของ logo */
 .logo a:hover {
-  color: #dddddd;                     /* สีเมื่อ hover */
-  transform: scale(1.2);             /* ขยายโลโก้เมื่อ hover */
-  transition: 0.3s;                  /* animation นุ่มนวล */
+  color: #dddddd;  /* สีเมื่อ hover */
+  transform: scale(2); /* ขยาย logo */
 }
 
-/* ปุ่ม Navbar */
-.desktop-auth-buttons {
-  display: flex;                     /* จัดเรียงปุ่มแนวนอน */
-  gap: 10px;                          /* ระยะห่างระหว่างปุ่ม */
+/* ----- เมนูหลัก Navbar ----- */
+.nav-menu {
+  margin-left: 13rem;  /* ระยะห่างจากโลโก้ */
+  display: flex;        /* ใช้ flex layout */
+  gap: 2rem;            /* ช่องว่างระหว่างเมนู */
+  align-items: center;  /* จัดกลางแนวตั้ง */
 }
 
-/* ===== ปุ่ม (Button) ===== */
+/* ลิงก์เมนู */
+.nav-link {
+  color: #d1d5db;         /* สีลิงก์ปกติ */
+  font-weight: 300;       /* น้ำหนักฟอนต์ */
+  transition: color 0.3s; /* เปลี่ยนสี smooth */
+}
+
+/* hover effect เมนู */
+.nav-link:hover {
+  color: var(--primary-green);
+}
+
+/* =========================================================
+   🟢 4) Buttons Component
+   - ปุ่มใช้ซ้ำได้ทั้งเว็บ
+   ========================================================= */
+
+/* ปุ่มพื้นฐาน */
 .btn {
-  padding: 8px 20px;                  /* ระยะขอบภายในปุ่ม */
-  border-radius: 50px;                /* ปุ่มโค้งมน */
-  font-size: 0.9rem;
-  cursor: pointer;                     /* เปลี่ยน cursor เมื่อ hover */
-  border: none;                        /* ลบ border default */
-  font-family: "Prompt", sans-serif;
-  transition: 0.3s;                   /* animation นุ่มนวล */
+  padding: 8px 20px;           /* ระยะ padding ภายในปุ่ม */
+  border-radius: 50px;         /* ปุ่มเป็นวงรี */
+  font-size: 0.9rem;           /* ขนาดฟอนต์ */
+  cursor: pointer;             /* cursor เป็น pointer */
+  transition: 0.3s;            /* animation smooth */
+  border: none;                /* ไม่มี border */
+  font-family: "Prompt", sans-serif; /* ฟอนต์ปุ่ม */
 }
 
-/* ปุ่มหลัก (Primary) */
-.btn-primary {
-  background-color: var(--primary-green);
-  color: var(--text-white);
-}
-
-.btn-primary:hover {
-  background-color: var(--primary-green-hover);
-  transform: translateY(-2px);        /* ยกขึ้นเล็กน้อย */
-  box-shadow: 0 4px 12px rgba(0,192,127,0.4); /* เงา */
-}
-
-/* ปุ่มแบบมีขอบ (Outline) */
+/* ปุ่มสีเขียว (พื้นหลัง + ขอบ) */
+.btn-primary,
 .btn-outline {
-  background-color: var(--primary-green);
-  color: var(--text-white);
-  border: 1px solid var(--primary-green);
+  background-color: var(--primary-green); /* พื้นหลังเขียว */
+  color: var(--text-white);               /* ตัวอักษรสีขาว */
+  border: 1px solid var(--primary-green); /* ขอบเขียว */
 }
 
+/* hover effect ปุ่ม */
+.btn-primary:hover,
 .btn-outline:hover {
-  background-color: var(--primary-green-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,192,127,0.4);
+  background-color: var(--primary-green-hover); /* สีเขียวเข้มขึ้น */
+  transform: translateY(-2px);                  /* ยกปุ่มขึ้นเล็กน้อย */
+  box-shadow: 0 4px 12px rgba(0,192,127,0.4);  /* เงา hover */
 }
 
-/* ===== Hero Section ===== */
-.hero {
-  position: relative;
-  width: 100%;
-  height: 90vh;                     /* ความสูงเกือบเต็ม viewport */
+/* ปุ่มกลุ่ม Desktop */
+.desktop-auth-buttons {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 10px; /* ช่องว่างระหว่างปุ่ม */
+}
+
+/* =========================================================
+   🖼️ 5) Hero Section Component
+   ========================================================= */
+.hero {
+  height: 90vh; /* สูง 90% ของ viewport */
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)),
+    url("https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;    /* ครอบคลุมเต็มพื้นที่ */
+  background-position: center;
+  display: flex;
+  justify-content: center;   /* จัดกลางแนวนอน */
+  align-items: center;       /* จัดกลางแนวตั้ง */
   text-align: center;
-  color: var(--text-white);
-  overflow: hidden;
-  background-color: #000;           /* สีพื้นหลังสำรอง */
+  color: white;
+  padding: 0 20px;           /* padding ด้านข้าง */
 }
 
-/* วิดีโอพื้นหลัง hero */
-.hero-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;                 /* ครอบคลุมพื้นที่ */
-  z-index: 0;                        /* อยู่ด้านหลัง */
-  filter: brightness(60%);           /* ลดความสว่างเพื่อ readability */
-}
-
-/* เนื้อหา hero */
-.hero-content {
-  position: relative;
-  z-index: 1;                        /* อยู่ด้านหน้าวิดีโอ */
-  text-shadow: 0 0 7px rgba(0,0,0,0.7);
-}
-
-.hero-content h1 {
+/* ตัวอักษรหัวเรื่อง */
+.hero h1 {
   font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3); /* เงา text */
+}
+
+/* ข้อความ hero */
+.hero p {
+  font-size: 1.2rem;
+  margin: 0 auto 2rem;       /* center text */
+  font-weight: 300;
+  max-width: 600px;
+}
+
+/* ปุ่ม hero */
+.hero-btn {
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  display: inline-block;
+}
+
+/* =========================================================
+   ⭐ 6) Features Section Component
+   ========================================================= */
+.features {
+  padding: 4rem 10%; /* ระยะ padding รอบด้าน */
+  display: grid;      /* ใช้ grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* responsive */
+  gap: 3rem;          /* ช่องว่างระหว่าง card */
+  text-align: center;
+  background-color: white;
+}
+
+/* ไอคอน feature */
+.feature-item i {
+  font-size: 3rem;
+  color: var(--primary-green);
   margin-bottom: 1rem;
 }
 
-.hero-content p {
+/* ชื่อ feature */
+.feature-item h3 {
+  margin-bottom: 0.5rem;
   font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto 2rem auto;
-  font-weight: 300;
-  opacity: 0.9;
 }
 
-/* ===== Menu / Zones Section ===== */
-.menu-container {
-  padding: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* ข้อความ feature */
+.feature-item p {
+  color: #1e1e1e;
+  font-size: 0.9rem;
+}
+
+/* =========================================================
+   📦 7) Zones Section Component
+   ========================================================= */
+.zones {
+  padding: 4rem 10%;
   text-align: center;
 }
 
-/* ชื่อชั้นอาหาร */
-.food-floor-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #333;
-  margin: 20px 0 10px 0;
+/* หัวข้อ section */
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  color: #1e1e1e;
+}
+
+.section-title span {
+  color: var(--primary-green);
   position: relative;
 }
 
-.food-floor-title::after {
+/* เส้นใต้หัวข้อ */
+.section-title span::after {
   content: "";
   display: block;
-  width: 160px;
-  height: 5px;
-  background: var(--primary-green);
-  margin: 10px auto 0 auto;
-  border-radius: 2px;
-}
-
-/* Zones Grid */
-.zones {
   width: 100%;
-  padding: 40px 0;
+  height: 3px;
+  background-color: var(--primary-green);
+  position: absolute;
+  bottom: -5px; /* วางเส้นใต้ */
 }
 
+/* Grid ของโซน */
 .zone-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* responsive */
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* responsive */
+  gap: 2rem;  /* ช่องว่างระหว่าง card */
 }
 
+/* การ์ดโซน */
 .zone-card {
-  background: #fff;
+  background: white;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
@@ -200,27 +257,13 @@ a {
   cursor: pointer;
 }
 
-.zone-card2{
-  background: #fff;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  transition: 0.3s;
-  cursor: pointer;
-  width: 350px;
-  margin-left: 80px;
-}
-
-.zone-card2:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-}
-
+/* hover card */
 .zone-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
+/* รูปใน card */
 .zone-img {
   width: 100%;
   height: 200px;
@@ -233,6 +276,7 @@ a {
   transform: scale(1.05);
 }
 
+/* ข้อมูล text ใน card */
 .zone-info {
   padding: 1.5rem;
   text-align: left;
@@ -243,24 +287,46 @@ a {
   margin-bottom: 0.5rem;
 }
 
+.zone-info p {
+  color: #1e1e1e;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* ปุ่ม view */
 .view-btn {
+  color: var(--primary-green);
+  font-weight: 600;
   display: flex;
   align-items: center;
   gap: 5px;
-  color: var(--primary-green);
-  font-weight: 600;
   transition: 0.2s;
-  margin-top: 1rem;
 }
 
 .view-btn:hover {
   gap: 10px;
 }
 
-/* ===== Footer ===== */
+/* =========================================================
+   📝 8) Keyframes / Animations
+   ========================================================= */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   🦶 9) Footer Component
+   ========================================================= */
 .site-footer {
-  background-color: var(--nav-bg);
-  color: var(--text-white);
+  background-color: #1e1e1e;
+  color: #fff;
   padding: 40px 20px 20px;
   font-family: "Poppins", sans-serif;
 }
@@ -271,29 +337,34 @@ a {
   justify-content: space-between;
   gap: 30px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
 }
 
+/* ส่วนต่างๆใน footer */
 .footer-about,
 .footer-links,
 .footer-contact {
-  flex: 1 1 250px; /* responsive */
+  flex: 1 1 250px; /* ปรับขนาดอัตโนมัติ responsive */
 }
 
+/* โลโก้ใน footer */
 .footer-logo-img {
   width: 150px;
   margin-bottom: 15px;
 }
 
+/* หัวข้อ footer */
 .footer-links h3,
 .footer-contact h3 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #ffffff;
   position: relative;
   display: inline-block;
   padding-bottom: 4px;
-  margin-bottom: 15px;
-  font-size: 16px;
 }
 
+/* เส้นใต้หัวข้อ */
 .footer-links h3::after,
 .footer-contact h3::after {
   content: "";
@@ -306,9 +377,9 @@ a {
   border-radius: 5px;
 }
 
+/* รายการลิงก์ */
 .footer-links ul {
   list-style: none;
-  padding: 0;
 }
 
 .footer-links li {
@@ -317,6 +388,7 @@ a {
 
 .footer-links a {
   color: #fff;
+  text-decoration: none;
   transition: color 0.3s;
 }
 
@@ -324,10 +396,12 @@ a {
   color: var(--primary-green);
 }
 
+/* ข้อมูลติดต่อ */
 .footer-contact p {
   margin: 5px 0;
 }
 
+/* ไอคอนโซเชียล */
 .social-icons {
   display: flex;
   gap: 15px;
@@ -344,6 +418,7 @@ a {
   transform: scale(1.2);
 }
 
+/* ส่วนล่างสุด footer */
 .footer-bottom {
   text-align: center;
   margin-top: 30px;
@@ -351,4 +426,61 @@ a {
   padding-top: 15px;
   font-size: 14px;
   color: #aaa;
+}
+
+/* ================= น้อมรำลึก pop-up ==================== */
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    backdrop-filter: blur(3px);
+}
+
+/* กล่อง pop-up ไม่ต้องมีพื้นหลัง */
+.popup-box {
+    position: relative;
+    animation: fadeIn 0.4s ease;
+}
+
+/* รูปแสดงตรงกลาง */
+.tribute-img {
+    width: 400px;
+    max-width: 90vw;
+    border-radius: 10px;
+}
+
+/* ปุ่มปิดแบบกากบาท */
+.close-x {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: rgba(0, 0, 0, 0.65);
+    color: white;
+    font-size: 26px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 34px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.close-x:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.92); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ซ่อนตอนปิด */
+.hidden {
+    display: none !important;
 }
