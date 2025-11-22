@@ -1,100 +1,118 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600&display=swap');
-
-* {
-    box-sizing: border-box;
-    font-family: 'Noto Sans Thai', sans-serif;
+/* ตั้งค่าพื้นฐาน */
+body {
+    font-family: "Prompt", sans-serif;
+    background-color: #eeeeee;
     margin: 0;
     padding: 0;
-}
-
-body {
-    background: linear-gradient(135deg, #fceabb, #f8b500);
-    min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-start;
-    padding: 20px;
+    min-height: 100vh;
+    color: #1e1e1e;
 }
 
-header h1 {
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 2rem;
+/* กล่องคอนเทนเนอร์หลัก */
+.status-container {
+    width: 90%;
+    max-width: 600px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     text-align: center;
 }
 
-.order-status {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    max-width: 600px;
+/* ส่วนหัว */
+.order-header h1 { 
+    color: #00a86b; 
+    font-size: 2rem; 
+    margin-bottom: 10px; 
 }
 
-.food-box {
-    display: flex;
-    background-color: white;
+.order-id { 
+    font-size: 1.3rem; 
+    color: #555; 
+    margin-bottom: 30px; 
+    font-weight: bold; 
+    letter-spacing: 1px;
+}
+
+/* ป้ายสถานะ */
+.status-wrapper {
+    margin-bottom: 40px;
+}
+
+.status-badge {
+    display: inline-block;
+    background: #ff9800; /* สีส้ม: รอรับออเดอร์ */
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+    animation: pulse 2s infinite; /* เอฟเฟกต์กระพริบ */
+}
+
+/* รายการสินค้า */
+.order-summary {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.order-summary h3 {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.order-items-list {
+    background: #f9f9f9;
+    padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.food-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-}
-
-.food-box img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-}
-
-.food-info {
-    padding: 15px;
+.item-row {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.food-info h2 {
-    color: #222;
-    margin-bottom: 8px;
-}
-
-.status {
-    font-weight: bold;
-    padding: 4px 8px;
-    border-radius: 8px;
-}
-
-.status.preparing {
-    background-color: #ffecb3;
-    color: #d48806;
-}
-
-.status.delivered {
-    background-color: #d9f7be;
-    color: #389e0d;
-}
-
-footer {
-    margin-top: 30px;
-}
-
-.status-btn {
-    background-color: #ff7f50;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 24px;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
     font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.2s ease;
 }
 
-.status-btn:hover {
-    background-color: #ff9b70;
+.item-row:last-child { 
+    border-bottom: none; 
+}
+
+/* ราคารวม */
+.total-sum {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #1e1e1e;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* ปุ่มกลับ */
+.back-home-btn {
+    background: #333;
+    color: #fff;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: background 0.3s;
+    display: inline-block;
+}
+
+.back-home-btn:hover {
+    background: #000;
+}
+
+/* Animation กระพริบ */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255, 152, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0); }
 }
