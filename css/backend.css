@@ -94,6 +94,7 @@ h1 {
 }
 
 /* ===== Select สถานะออเดอร์ ===== */
+/* ตกแต่งจาก <div class="order-info"> ใน backend.js */
 .order-info select {
   appearance: none; /* ลบ default arrow */
   background: #ffffff 
