@@ -46,7 +46,7 @@ function renderOrders() {
                 <select id="select-${realIndex}" class="status-select">
                     <option value="รอรับออเดอร์" ${order.status === 'รอรับออเดอร์' ? 'selected' : ''}>รอรับออเดอร์</option>
                     <option value="กำลังทำอาหาร" ${order.status === 'กำลังทำอาหาร' ? 'selected' : ''}>กำลังทำอาหาร</option>
-                    <option value="เสร็จแล้ว" ${order.status === 'เสร็จแล้ว' ? 'selected' : ''}>เสร็จแล้ว</option>
+                    <option value="เสร็จแล้ว" ${order.status === 'วัตถุดิบหมด' ? 'selected' : ''}>เสร็จแล้ว</option>
                     <option value="จัดส่งแล้ว" ${order.status === 'จัดส่งแล้ว' ? 'selected' : ''}>จัดส่งแล้ว</option>
                     <option value="ยกเลิกออเดอร์" ${order.status === 'ยกเลิกออเดอร์' ? 'selected' : ''}>ยกเลิกออเดอร์</option>
                 </select>
