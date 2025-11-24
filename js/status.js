@@ -83,7 +83,7 @@ setInterval(() => {
                 displayStatus.style.backgroundColor = "#2196F3"; // ฟ้า
             } else if (updatedOrder.status === "วัตถุดิบหมด") {
                 displayStatus.style.backgroundColor = "#FF5722"; // ส้มแดง
-                displayStatus.innerText = "วัตถุดิบหมด 🛵";
+                displayStatus.innerText = "วัตถุดิบหมด 🙏🏽";
             }
             
             // เล่น animation แจ้งเตือนนิดหน่อย
