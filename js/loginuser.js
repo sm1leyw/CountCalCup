@@ -72,7 +72,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
         localStorage.setItem('currentUser', JSON.stringify(foundUser));
         
         // ย้ายไปหน้า index.html
-        window.location.href = 'shop.html';
+        window.location.href = 'Shop.html';
     } else {
         alert("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
     }
