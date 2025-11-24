@@ -81,9 +81,9 @@ setInterval(() => {
                 displayStatus.style.backgroundColor = "#00a86b"; // เขียว
             } else if (updatedOrder.status === "เสร็จแล้ว") {
                 displayStatus.style.backgroundColor = "#2196F3"; // ฟ้า
-            } else if (updatedOrder.status === "จัดส่งแล้ว") {
+            } else if (updatedOrder.status === "วัตถุดิบหมด") {
                 displayStatus.style.backgroundColor = "#FF5722"; // ส้มแดง
-                displayStatus.innerText = "จัดส่งแล้ว 🛵";
+                displayStatus.innerText = "วัตถุดิบหมด 🛵";
             }
             
             // เล่น animation แจ้งเตือนนิดหน่อย

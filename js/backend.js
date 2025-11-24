@@ -46,8 +46,8 @@ function renderOrders() {
                 <select id="select-${realIndex}" class="status-select">
                     <option value="รอรับออเดอร์" ${order.status === 'รอรับออเดอร์' ? 'selected' : ''}>รอรับออเดอร์</option>
                     <option value="กำลังทำอาหาร" ${order.status === 'กำลังทำอาหาร' ? 'selected' : ''}>กำลังทำอาหาร</option>
-                    <option value="เสร็จแล้ว" ${order.status === 'วัตถุดิบหมด' ? 'selected' : ''}>เสร็จแล้ว</option>
-                    <option value="จัดส่งแล้ว" ${order.status === 'จัดส่งแล้ว' ? 'selected' : ''}>จัดส่งแล้ว</option>
+                    <option value="เสร็จแล้ว" ${order.status === 'เสร็จแล้ว' ? 'selected' : ''}>เสร็จแล้ว</option>
+                    <option value="วัตถุดิบหมด" ${order.status === 'วัตถุดิบหมด' ? 'selected' : ''}>วัตถุดิบหมด</option>
                     <option value="ยกเลิกออเดอร์" ${order.status === 'ยกเลิกออเดอร์' ? 'selected' : ''}>ยกเลิกออเดอร์</option>
                 </select>
 
@@ -70,8 +70,8 @@ window.handleSave = function(index) {
     const newStatus = selectEl.value;
     const currentOrderData = shopOrders[index]; // ข้อมูลออเดอร์ตัวที่กำลังแก้
 
-    // 3. เช็คว่าเป็นสถานะจบงานไหม? (เสร็จ / จัดส่ง / ยกเลิก)
-    const isFinished = ["เสร็จแล้ว", "จัดส่งแล้ว", "ยกเลิกออเดอร์"].includes(newStatus);
+    // 3. เช็คว่าเป็นสถานะจบงานไหม? (เสร็จ / วัตถุดิบหมด / ยกเลิก)
+    const isFinished = ["เสร็จแล้ว", "วัตถุดิบหมด", "ยกเลิกออเดอร์"].includes(newStatus);
 
     if (isFinished) {
         // === กรณีจบงาน: ย้ายไป History ===
@@ -133,7 +133,7 @@ function renderHistory() {
         // กำหนดสีแถบข้าง
         let statusClass = "";
         if (order.status === "เสร็จแล้ว") statusClass = "status-done";
-        else if (order.status === "จัดส่งแล้ว") statusClass = "status-sent";
+        else if (order.status === "วัตถุดิบหมด") statusClass = "status-sent";
         else if (order.status === "ยกเลิกออเดอร์") statusClass = "status-cancel";
 
         item.className = `history-item ${statusClass}`;
